@@ -3,7 +3,7 @@ import 'package:vita_client_app/data/source/local/message_dao.dart';
 import 'package:vita_client_app/objectbox.g.dart';
 
 class MessageDaoImpl implements MessageDao {
-  Box<Message> _boxMessage;
+  final Box<Message> _boxMessage;
 
   MessageDaoImpl(this._boxMessage);
 
