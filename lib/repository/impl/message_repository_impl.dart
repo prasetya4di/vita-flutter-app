@@ -12,7 +12,7 @@ class MessageRepositoryImpl extends MessageRepository {
   MessageRepositoryImpl(this._messageDao, this._messageService);
 
   @override
-  Future<List<Message>> get() {
+  Future<List<Message>> read() {
     return _messageDao.get();
   }
 

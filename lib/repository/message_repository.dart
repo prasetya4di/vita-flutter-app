@@ -5,7 +5,7 @@ import 'package:vita_client_app/data/model/request/send_message.dart';
 abstract class MessageRepository {
   inserts(List<Message> messages);
 
-  Future<List<Message>> get();
+  Future<List<Message>> read();
 
   Future<Response<List<Message>>> getMessage();
 
