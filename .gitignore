@@ -33,6 +33,7 @@ migrate_working_dir/
 /build/
 pubspec.lock
 *.g.dart
+*.chopper.dart
 
 # Symbolication related
 app.*.symbols
