@@ -10,6 +10,7 @@ class Message {
   int id;
   String email;
   String message;
+  @Property(type: PropertyType.date)
   @JsonKey(name: "created_date")
   DateTime createdDate;
   @JsonKey(name: "message_type")
