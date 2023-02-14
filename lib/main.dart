@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:vita_client_app/data/model/entity/message.dart';
+import 'package:vita_client_app/data/source/local/impl/message_dao_impl.dart';
+import 'package:vita_client_app/data/source/local/message_dao.dart';
+import 'package:vita_client_app/data/source/network/message_service.dart';
 import 'package:vita_client_app/generated/assets.dart';
+import 'package:vita_client_app/repository/impl/message_repository_impl.dart';
+import 'package:vita_client_app/repository/message_repository.dart';
 
-void main() {
+import 'data/source/local/objectbox.dart';
+import 'data/source/network/chopper_service.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  ObjectBox objectbox = await ObjectBox.create();
+  MessageDao messageDao = MessageDaoImpl(objectbox.store.box<Message>());
+  MessageRepository messageRepository = MessageRepositoryImpl(
+      messageDao, chopperClient.getService<MessageService>());
   runApp(const MyApp());
 }
 
