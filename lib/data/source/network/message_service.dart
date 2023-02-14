@@ -17,4 +17,7 @@ abstract class MessageService extends ChopperService {
 
   @Post()
   Future<Response<List<Message>>> sendMessage(@Body() SendMessage request);
+
+  @Post(path: "/reply")
+  Future<Response<List<Message>>> replyMessage(@Body() SendMessage request);
 }
