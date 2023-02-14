@@ -16,4 +16,9 @@ class MessageDaoImpl implements MessageDao {
   Future<List<Message>> get() async {
     return _boxMessage.getAll();
   }
+
+  @override
+  Future<void> delete() async {
+    _boxMessage.removeAll();
+  }
 }

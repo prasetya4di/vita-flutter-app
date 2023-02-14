@@ -4,4 +4,6 @@ abstract class MessageDao {
   inserts(List<Message> messages);
 
   Future<List<Message>> get();
+
+  Future<void> delete();
 }

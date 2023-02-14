@@ -35,4 +35,9 @@ class MessageRepositoryImpl extends MessageRepository {
   Future<Response<List<Message>>> sendMessage(SendMessage request) {
     return _messageService.sendMessage(request);
   }
+
+  @override
+  Future<void> deleteMessage() async {
+    _messageDao.delete();
+  }
 }

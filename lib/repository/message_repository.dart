@@ -7,6 +7,8 @@ abstract class MessageRepository {
 
   Future<List<Message>> read();
 
+  Future<void> deleteMessage();
+
   Future<Response<List<Message>>> getMessage();
 
   @Post()
