@@ -1,14 +1,12 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:objectbox/objectbox.dart';
 
 part 'image_possibility.g.dart';
 
 @JsonSerializable()
-@HiveType(typeId: 1)
-class ImagePossibility extends HiveObject {
-  @HiveField(0)
+@Entity()
+class ImagePossibility {
   String type;
-  @HiveField(1)
   String description;
 
   ImagePossibility(this.type, this.description);

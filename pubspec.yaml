@@ -37,13 +37,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.1
   flutter_bloc: ^8.1.2
-  hive: ^2.2.3
   json_serializable: ^6.6.1
   chopper: ^6.1.0
   flutter_localizations:
     sdk: flutter
   intl: any
   json_annotation: ^4.8.0
+  objectbox: ^1.7.2
 
 dev_dependencies:
   flutter_test:
