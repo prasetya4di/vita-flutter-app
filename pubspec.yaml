@@ -43,6 +43,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  json_annotation: ^4.8.0
 
 dev_dependencies:
   flutter_test:
