@@ -1,0 +1,52 @@
+{
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "fetchingInformation": "Fetching Information ...",
+  "@fetchingInformation": {
+    "description": "Text fetching information for splash page"
+  },
+  "typeMessage": "Type Message ...",
+  "@typeMessage": {
+    "description": "Text type message for type message text field"
+  },
+  "sendButton": "send",
+  "@sendButton": {
+    "description": "Text for button send"
+  },
+  "today": "Today",
+  "@today": {
+    "description": "Text today"
+  },
+  "yesterday": "Yesterday",
+  "@yesterday": {
+    "description": "Text yesterday"
+  },
+  "camera": "Camera",
+  "@camera": {
+    "description": "Text camera"
+  },
+  "gallery": "Gallery",
+  "@gallery": {
+    "description": "Text gallery"
+  },
+  "textBadgeDate": "{date}",
+  "@textBadgeDate": {
+    "description": "Text badge with date",
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMd"
+      }
+    }
+  },
+  "uploadImageFailed": "Upload image failed, click here to retry",
+  "@uploadImageFailed": {
+    "description": "Error message for upload image failed"
+  },
+  "sendMessageFailed": "Failed to send message, click to retry",
+  "@sendMessageFailed": {
+    "description": "Error message for send message failed"
+  }
+}
