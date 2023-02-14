@@ -46,6 +46,7 @@ dependencies:
   objectbox: ^1.7.2
   path_provider: ^2.0.12
   path: ^1.8.2
+  either_dart: ^0.3.0
 
 dev_dependencies:
   flutter_test:
