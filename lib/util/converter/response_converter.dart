@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:chopper/chopper.dart';
 import 'package:vita_client_app/data/model/response/response_error.dart';
 
@@ -5,8 +7,9 @@ import 'json_type_parser.dart';
 
 class ResponseConverter extends JsonConverter {
   @override
-  Response<ResultType> convertResponse<ResultType, Item>(Response response) {
-    final jsonRes = super.convertResponse<dynamic, dynamic>(response);
+  FutureOr<Response<ResultType>> convertResponse<ResultType, Item>(
+      Response response) async {
+    final jsonRes = await super.convertResponse<dynamic, dynamic>(response);
     if (jsonRes.body == null ||
         (jsonRes.body is String && (jsonRes.body as String).isEmpty)) {
       return jsonRes.copyWith(body: null);
@@ -17,8 +20,9 @@ class ResponseConverter extends JsonConverter {
   }
 
   @override
-  Response convertError<BodyType, InnerType>(Response response) {
-    final jsonRes = super.convertError<BodyType, InnerType>(response);
+  FutureOr<Response> convertError<BodyType, InnerType>(
+      Response response) async {
+    final jsonRes = await super.convertError<BodyType, InnerType>(response);
     final dynamic body = jsonRes.body;
     final dynamic responseError = JsonTypeParser.decode<ResponseError>(body);
     return jsonRes.copyWith<BodyType>(bodyError: responseError as BodyType);
