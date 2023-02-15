@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vita_client_app/view/splash/bloc/splash_bloc.dart';
 import 'package:vita_client_app/view/splash/bloc/splash_state.dart';
 
@@ -8,7 +9,9 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<SplashBloc>().add(const GetMessageEvent());
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => context.read<SplashBloc>().add(const GetMessageEvent()));
+
     return BlocConsumer<SplashBloc, SplashState>(builder: (context, state) {
       return Scaffold(
         body: Column(
@@ -17,7 +20,10 @@ class SplashScreen extends StatelessWidget {
             const Text("I <3 Pras"),
             if (state is SplashLoadingState) const CircularProgressIndicator(),
             if (state is SplashLoadingState)
-              const Text("Fetching information ...")
+              Text(
+                AppLocalizations.of(context).fetchingInformation,
+                style: Theme.of(context).textTheme.titleMedium,
+              )
           ],
         ),
       );

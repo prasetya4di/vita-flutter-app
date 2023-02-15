@@ -9,7 +9,7 @@ import 'package:vita_client_app/view/splash/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await setupServiceLocator();
+  await setupDI();
   runApp(const MyApp());
 }
 

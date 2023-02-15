@@ -7,6 +7,8 @@ part 'message.g.dart';
 @Entity()
 class Message {
   @Id()
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  int obxId = 0;
   int id;
   String email;
   String message;
@@ -21,7 +23,7 @@ class Message {
   Message(this.id, this.email, this.message, this.createdDate, this.messageType,
       this.fileType);
 
-  Message.name(this.id, this.email, this.message, this.createdDate,
+  Message.name(this.obxId, this.id, this.email, this.message, this.createdDate,
       this.messageType, this.fileType);
 
   factory Message.fromJson(Map<String, dynamic> json) =>

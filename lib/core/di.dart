@@ -18,7 +18,7 @@ import 'package:vita_client_app/repository/message_repository.dart';
 
 final di = GetIt.I;
 
-Future<void> setupServiceLocator() async {
+Future<void> setupDI() async {
   // dao
   final objectBox = await ObjectBox.create();
   di.registerSingleton<Box<Message>>(objectBox.store.box<Message>());
