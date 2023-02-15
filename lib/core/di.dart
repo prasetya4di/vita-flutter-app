@@ -9,9 +9,9 @@ import 'package:vita_client_app/data/source/network/image_service.dart';
 import 'package:vita_client_app/data/source/network/message_service.dart';
 import 'package:vita_client_app/domain/fetch_message.dart';
 import 'package:vita_client_app/domain/impl/fetch_message_impl.dart';
-import 'package:vita_client_app/domain/impl/read_message_impl.dart';
+import 'package:vita_client_app/domain/impl/load_message_impl.dart';
 import 'package:vita_client_app/domain/impl/send_message_impl.dart';
-import 'package:vita_client_app/domain/read_message.dart';
+import 'package:vita_client_app/domain/load_message.dart';
 import 'package:vita_client_app/domain/send_message.dart';
 import 'package:vita_client_app/repository/impl/message_repository_impl.dart';
 import 'package:vita_client_app/repository/message_repository.dart';
@@ -35,6 +35,6 @@ Future<void> setupServiceLocator() async {
 
   // use case
   di.registerSingleton<FetchMessage>(FetchMessageImpl(di.get()));
-  di.registerSingleton<ReadMessage>(ReadMessageImpl(di.get()));
+  di.registerSingleton<LoadMessage>(LoadMessageImpl(di.get()));
   di.registerSingleton<SendMessage>(SendMessageImpl(di.get()));
 }
