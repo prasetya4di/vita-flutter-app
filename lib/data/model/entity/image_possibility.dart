@@ -6,10 +6,12 @@ part 'image_possibility.g.dart';
 @JsonSerializable()
 @Entity()
 class ImagePossibility {
+  @Id()
+  int id;
   String type;
   String description;
 
-  ImagePossibility(this.type, this.description);
+  ImagePossibility(this.id, this.type, this.description);
 
   factory ImagePossibility.fromJson(Map<String, dynamic> json) =>
       _$ImagePossibilityFromJson(json);
