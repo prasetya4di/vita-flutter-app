@@ -7,6 +7,7 @@ import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_state.dart';
 import 'package:vita_client_app/view/chat/widget/chat_reply.dart';
 import 'package:vita_client_app/view/chat/widget/chat_send.dart';
+import 'package:vita_client_app/view/chat/widget/chat_sending.dart';
 import 'package:vita_client_app/view/chat/widget/chat_text_field.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -50,7 +51,7 @@ class ChatScreen extends StatelessWidget {
                             }
                           })),
                   if (loadMessage != null)
-                    ChatSend(message: loadMessage.message),
+                    ChatSending(message: loadMessage.message),
                   ChatTextField(controller: _controller)
                 ],
               );
