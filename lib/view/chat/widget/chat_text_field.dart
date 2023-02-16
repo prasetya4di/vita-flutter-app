@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vita_client_app/generated/assets.dart';
 import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
+import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
+import 'package:vita_client_app/view/chat/bloc/chat_state.dart';
 
-class ChatTextField extends StatelessWidget {
-  const ChatTextField({super.key});
+class ChatTextField extends StatefulWidget {
+  final TextEditingController controller;
 
+  const ChatTextField({super.key, required this.controller});
+
+  @override
+  State<ChatTextField> createState() => _ChatTextField();
+}
+
+class _ChatTextField extends State<ChatTextField> {
   @override
   Widget build(BuildContext context) {
     var inputBorder = const OutlineInputBorder(
@@ -28,6 +38,10 @@ class ChatTextField extends StatelessWidget {
           children: [
             Flexible(
               child: TextField(
+                controller: widget.controller,
+                onChanged: (text) {
+                  setState(() {});
+                },
                 textAlignVertical: TextAlignVertical.center,
                 style: Theme.of(context).textTheme.bodyMedium,
                 maxLines: null,
@@ -56,7 +70,15 @@ class ChatTextField extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: widget.controller.value.text.isEmpty
+                      ? null
+                      : () {
+                          context.read<ChatBloc>().add(
+                              SendMessageEvent(widget.controller.value.text));
+                          setState(() {
+                            widget.controller.clear();
+                          });
+                        },
                   child: Text(
                     AppLocalizations.of(context).sendButton,
                     style: const TextStyle(

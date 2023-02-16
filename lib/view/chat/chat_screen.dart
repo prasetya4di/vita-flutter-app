@@ -10,7 +10,9 @@ import 'package:vita_client_app/view/chat/widget/chat_send.dart';
 import 'package:vita_client_app/view/chat/widget/chat_text_field.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+  ChatScreen({super.key});
+
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class ChatScreen extends StatelessWidget {
                           }));
                 },
                 listener: (context, state) {}),
-            const ChatTextField()
+            ChatTextField(controller: _controller)
           ],
         ));
   }

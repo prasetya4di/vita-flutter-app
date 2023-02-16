@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: AppLocalizations.supportedLocales,
           routes: {
             Routes.splash: (_) => const SplashScreen(),
-            Routes.chat: (_) => const ChatScreen()
+            Routes.chat: (_) => ChatScreen()
           },
           initialRoute: Routes.splash,
           theme: ThemeData(
