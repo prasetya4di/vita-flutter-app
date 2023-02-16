@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vita_client_app/core/di.dart';
 import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/constant/routes.dart';
+import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
 import 'package:vita_client_app/view/chat/chat_screen.dart';
 import 'package:vita_client_app/view/splash/bloc/splash_bloc.dart';
 import 'package:vita_client_app/view/splash/splash_screen.dart';
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [BlocProvider(create: (_) => SplashBloc())],
+        providers: [
+          BlocProvider(create: (_) => SplashBloc()),
+          BlocProvider(create: (_) => ChatBloc())
+        ],
         child: MaterialApp(
           title: 'Vita',
           localizationsDelegates: AppLocalizations.localizationsDelegates,
