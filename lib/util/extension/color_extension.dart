@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension on Colors {
+extension AssetColor on Colors {
   static const gray50 = Color(0xFFEFEFEF);
   static const gray100 = Color(0xFFF3F3F3);
   static const gray200 = Color(0xFFBDBDBD);

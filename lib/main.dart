@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vita_client_app/core/di.dart';
-import 'package:vita_client_app/generated/assets.dart';
+import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/constant/routes.dart';
 import 'package:vita_client_app/view/chat/chat_screen.dart';
 import 'package:vita_client_app/view/splash/bloc/splash_bloc.dart';
@@ -34,26 +34,30 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
               primarySwatch: Colors.blue,
               textTheme: const TextTheme(
-                titleSmall: TextStyle(
-                    fontFamily: Assets.fontsPoppinsBold, fontSize: 12),
+                titleSmall: TextStyle(fontFamily: poppins, fontSize: 12),
                 titleMedium: TextStyle(
-                    fontFamily: Assets.fontsPoppinsBold,
+                    fontFamily: poppins,
                     fontSize: 16,
                     fontWeight: FontWeight.bold),
                 titleLarge: TextStyle(
-                    fontFamily: Assets.fontsPoppinsBold, fontSize: 20),
-                bodySmall: TextStyle(
-                    fontFamily: Assets.fontsPoppinsRegular, fontSize: 12),
-                bodyMedium: TextStyle(
-                    fontFamily: Assets.fontsPoppinsRegular, fontSize: 14),
-                bodyLarge: TextStyle(
-                    fontFamily: Assets.fontsPoppinsRegular, fontSize: 18),
+                    fontFamily: poppins,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700),
+                bodySmall: TextStyle(fontFamily: poppins, fontSize: 12),
+                bodyMedium: TextStyle(fontFamily: poppins, fontSize: 14),
+                bodyLarge: TextStyle(fontFamily: poppins, fontSize: 18),
                 labelSmall: TextStyle(
-                    fontFamily: Assets.fontsPoppinsSemiBold, fontSize: 12),
+                    fontFamily: poppins,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500),
                 labelMedium: TextStyle(
-                    fontFamily: Assets.fontsPoppinsSemiBold, fontSize: 14),
+                    fontFamily: poppins,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500),
                 labelLarge: TextStyle(
-                    fontFamily: Assets.fontsPoppinsSemiBold, fontSize: 18),
+                    fontFamily: poppins,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500),
               )),
         ));
   }
