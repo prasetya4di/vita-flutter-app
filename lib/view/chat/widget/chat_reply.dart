@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:vita_client_app/data/model/entity/message.dart';
 import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 import 'package:vita_client_app/view/chat/widget/chat_text_time.dart';
 
 class ChatReply extends StatelessWidget {
-  final String message;
+  final Message message;
 
   const ChatReply({super.key, required this.message});
 
@@ -31,12 +32,12 @@ class ChatReply extends StatelessWidget {
                         offset: const Offset(0, 0))
                   ]),
               child: Text(
-                message,
+                message.message,
                 style: const TextStyle(fontFamily: poppins),
               ),
             ),
           ),
-          const ChatTextTime(time: "11:49"),
+          ChatTextTime(time: message.createdDate),
         ],
       ),
     );

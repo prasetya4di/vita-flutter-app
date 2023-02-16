@@ -16,7 +16,7 @@ class ChatSending extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const ChatTextTime(time: "11:49"),
+          ChatTextTime(time: DateTime.now()),
           Flexible(
             child: Container(
               padding: const EdgeInsets.all(8),

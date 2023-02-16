@@ -45,9 +45,9 @@ class ChatScreen extends StatelessWidget {
                           itemBuilder: (context, i) {
                             var data = context.read<ChatBloc>().messages[i];
                             if (data.messageType == "reply") {
-                              return ChatReply(message: data.message);
+                              return ChatReply(message: data);
                             } else {
-                              return ChatSend(message: data.message);
+                              return ChatSend(message: data);
                             }
                           })),
                   if (loadMessage != null)

@@ -3,13 +3,13 @@ import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 
 class ChatTextTime extends StatelessWidget {
-  final String time;
+  final DateTime time;
 
   const ChatTextTime({super.key, required this.time});
 
   @override
   Widget build(BuildContext context) {
-    return Text(time,
+    return Text("${time.hour}.${time.minute}",
         style: const TextStyle(
             fontFamily: poppins,
             fontSize: 10,

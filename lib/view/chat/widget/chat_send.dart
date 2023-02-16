@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:vita_client_app/data/model/entity/message.dart';
 import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 import 'package:vita_client_app/view/chat/widget/chat_text_time.dart';
 
 class ChatSend extends StatelessWidget {
-  final String message;
+  final Message message;
 
   const ChatSend({super.key, required this.message});
 
@@ -16,7 +17,7 @@ class ChatSend extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const ChatTextTime(time: "11:49"),
+          ChatTextTime(time: message.createdDate),
           Flexible(
             child: Container(
               padding: const EdgeInsets.all(8),
@@ -32,7 +33,7 @@ class ChatSend extends StatelessWidget {
                         offset: const Offset(0, 0))
                   ]),
               child: Text(
-                message,
+                message.message,
                 style: const TextStyle(fontFamily: poppins),
               ),
             ),
