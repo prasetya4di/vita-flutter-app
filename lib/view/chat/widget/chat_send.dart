@@ -25,7 +25,7 @@ class ChatSend extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black.withOpacity(0.25),
+                      color: Colors.black.withOpacity(0.15),
                       blurRadius: 5,
                       spreadRadius: 0,
                       offset: const Offset(0, 0))

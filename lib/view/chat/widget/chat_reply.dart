@@ -20,18 +20,18 @@ class ChatReply extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             margin: const EdgeInsets.only(right: 8),
             decoration: BoxDecoration(
-                color: AssetColor.blue200,
+                color: AssetColor.gray100,
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black.withOpacity(0.25),
+                      color: Colors.black.withOpacity(0.15),
                       blurRadius: 5,
                       spreadRadius: 0,
                       offset: const Offset(0, 0))
                 ]),
             child: Text(
               message,
-              style: const TextStyle(fontFamily: poppins, color: Colors.white),
+              style: const TextStyle(fontFamily: poppins),
             ),
           ),
           const ChatTextTime(time: "11:49"),
