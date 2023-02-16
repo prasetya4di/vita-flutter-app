@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vita_client_app/generated/assets.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
+import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
+import 'package:vita_client_app/view/chat/bloc/chat_state.dart';
 import 'package:vita_client_app/view/chat/widget/chat_reply.dart';
 import 'package:vita_client_app/view/chat/widget/chat_send.dart';
 import 'package:vita_client_app/view/chat/widget/chat_text_field.dart';
@@ -11,6 +14,8 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => context.read<ChatBloc>().add(const LoadMessageEvent()));
     return Scaffold(
         appBar: AppBar(
           title: Text("Vita", style: Theme.of(context).textTheme.titleMedium),
@@ -25,15 +30,24 @@ class ChatScreen extends StatelessWidget {
           shadowColor: Colors.black.withOpacity(0.2),
         ),
         body: Column(
-          children: const [
-            Expanded(child: Text("Chat message")),
-            ChatSend(message: "This is just a test message lohh"),
-            ChatReply(message: "Iyaa tauuu, apaan luu !!!!!"),
-            ChatSend(message: "This is just a test message lohh"),
-            ChatReply(message: "Iyaa tauuu, apaan luu !!!!!"),
-            ChatSend(message: "This is just a test message lohh"),
-            ChatReply(message: "Iyaa tauuu, apaan luu !!!!!"),
-            ChatTextField()
+          children: [
+            BlocConsumer<ChatBloc, ChatState>(
+                builder: (context, state) {
+                  return Expanded(
+                      child: ListView.builder(
+                          reverse: true,
+                          itemCount: context.read<ChatBloc>().messages.length,
+                          itemBuilder: (context, i) {
+                            var data = context.read<ChatBloc>().messages[i];
+                            if (data.messageType == "reply") {
+                              return ChatReply(message: data.message);
+                            } else {
+                              return ChatSend(message: data.message);
+                            }
+                          }));
+                },
+                listener: (context, state) {}),
+            const ChatTextField()
           ],
         ));
   }

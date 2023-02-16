@@ -14,7 +14,7 @@ class MessageDaoImpl implements MessageDao {
 
   @override
   Future<List<Message>> get() async {
-    return _boxMessage.getAll();
+    return _boxMessage.getAll().reversed.toList();
   }
 
   @override

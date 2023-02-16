@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             Routes.splash: (_) => const SplashScreen(),
             Routes.chat: (_) => const ChatScreen()
           },
-          initialRoute: Routes.chat,
+          initialRoute: Routes.splash,
           theme: ThemeData(
               primarySwatch: Colors.blue,
               textTheme: const TextTheme(

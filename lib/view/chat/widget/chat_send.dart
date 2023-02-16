@@ -17,22 +17,24 @@ class ChatSend extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           const ChatTextTime(time: "11:49"),
-          Container(
-            padding: const EdgeInsets.all(8),
-            margin: const EdgeInsets.only(left: 8),
-            decoration: BoxDecoration(
-                color: AssetColor.green100,
-                borderRadius: const BorderRadius.all(Radius.circular(8)),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black.withOpacity(0.15),
-                      blurRadius: 5,
-                      spreadRadius: 0,
-                      offset: const Offset(0, 0))
-                ]),
-            child: Text(
-              message,
-              style: const TextStyle(fontFamily: poppins),
+          Flexible(
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.only(left: 8),
+              decoration: BoxDecoration(
+                  color: AssetColor.green100,
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.15),
+                        blurRadius: 5,
+                        spreadRadius: 0,
+                        offset: const Offset(0, 0))
+                  ]),
+              child: Text(
+                message,
+                style: const TextStyle(fontFamily: poppins),
+              ),
             ),
           ),
         ],

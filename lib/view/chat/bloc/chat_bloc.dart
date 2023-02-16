@@ -11,7 +11,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<LoadMessageEvent>((event, emit) async {
       emit(const ChatState.loading());
       var loadMessageResult = await di<LoadMessage>().call();
-      messages.addAll(loadMessageResult);
+      messages = loadMessageResult;
       emit(const ChatState.loadedState());
     });
   }
