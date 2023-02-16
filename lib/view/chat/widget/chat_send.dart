@@ -32,7 +32,7 @@ class ChatSend extends StatelessWidget {
                 ]),
             child: Text(
               message,
-              style: const TextStyle(fontFamily: poppins, color: Colors.white),
+              style: const TextStyle(fontFamily: poppins),
             ),
           ),
         ],
