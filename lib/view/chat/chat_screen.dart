@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vita_client_app/view/chat/widget/chat_reply.dart';
 import 'package:vita_client_app/view/chat/widget/chat_send.dart';
 import 'package:vita_client_app/view/chat/widget/chat_text_field.dart';
 
@@ -15,6 +16,11 @@ class ChatScreen extends StatelessWidget {
           children: const [
             Expanded(child: Text("Chat message")),
             ChatSend(message: "This is just a test message lohh"),
+            ChatReply(message: "Iyaa tauuu, apaan luu !!!!!"),
+            ChatSend(message: "This is just a test message lohh"),
+            ChatReply(message: "Iyaa tauuu, apaan luu !!!!!"),
+            ChatSend(message: "This is just a test message lohh"),
+            ChatReply(message: "Iyaa tauuu, apaan luu !!!!!"),
             ChatTextField()
           ],
         ));
