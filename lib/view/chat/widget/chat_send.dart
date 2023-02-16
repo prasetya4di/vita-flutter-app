@@ -20,10 +20,16 @@ class ChatSend extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             margin: const EdgeInsets.only(left: 8),
-            decoration: const BoxDecoration(
-              color: AssetColor.green100,
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-            ),
+            decoration: BoxDecoration(
+                color: AssetColor.green100,
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      blurRadius: 5,
+                      spreadRadius: 0,
+                      offset: const Offset(0, 0))
+                ]),
             child: Text(
               message,
               style: const TextStyle(fontFamily: poppins, color: Colors.white),
