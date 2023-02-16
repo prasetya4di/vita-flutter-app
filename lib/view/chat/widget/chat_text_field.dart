@@ -32,6 +32,8 @@ class ChatTextField extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium,
                 maxLines: null,
                 decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 16, horizontal: 18),
                     hintText: AppLocalizations.of(context).typeMessage,
                     hintStyle: const TextStyle(
                         color: AssetColor.gray200,
