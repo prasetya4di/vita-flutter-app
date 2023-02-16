@@ -76,6 +76,7 @@ class _ChatTextField extends State<ChatTextField> {
                           context.read<ChatBloc>().add(
                               SendMessageEvent(widget.controller.value.text));
                           setState(() {
+                            FocusScope.of(context).unfocus();
                             widget.controller.clear();
                           });
                         },

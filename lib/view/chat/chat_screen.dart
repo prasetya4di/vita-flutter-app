@@ -31,11 +31,13 @@ class ChatScreen extends StatelessWidget {
           backgroundColor: AssetColor.gray50,
           shadowColor: Colors.black.withOpacity(0.2),
         ),
-        body: Column(
-          children: [
-            BlocConsumer<ChatBloc, ChatState>(
-                builder: (context, state) {
-                  return Expanded(
+        body: BlocConsumer<ChatBloc, ChatState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              var loadMessage = context.read<ChatBloc>().loadMessage;
+              return Column(
+                children: [
+                  Expanded(
                       child: ListView.builder(
                           reverse: true,
                           itemCount: context.read<ChatBloc>().messages.length,
@@ -46,11 +48,12 @@ class ChatScreen extends StatelessWidget {
                             } else {
                               return ChatSend(message: data.message);
                             }
-                          }));
-                },
-                listener: (context, state) {}),
-            ChatTextField(controller: _controller)
-          ],
-        ));
+                          })),
+                  if (loadMessage != null)
+                    ChatSend(message: loadMessage.message),
+                  ChatTextField(controller: _controller)
+                ],
+              );
+            }));
   }
 }
