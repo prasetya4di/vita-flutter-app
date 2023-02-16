@@ -49,15 +49,15 @@ class MyApp extends StatelessWidget {
                 labelSmall: TextStyle(
                     fontFamily: poppins,
                     fontSize: 12,
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w600),
                 labelMedium: TextStyle(
                     fontFamily: poppins,
                     fontSize: 14,
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w600),
                 labelLarge: TextStyle(
                     fontFamily: poppins,
                     fontSize: 18,
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w600),
               )),
         ));
   }

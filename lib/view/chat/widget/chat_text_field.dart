@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vita_client_app/generated/assets.dart';
+import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 
 class ChatTextField extends StatelessWidget {
@@ -25,23 +28,41 @@ class ChatTextField extends StatelessWidget {
           children: [
             Flexible(
               child: TextField(
-                  textAlignVertical: TextAlignVertical.center,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  maxLines: null,
-                  decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context).typeMessage,
-                      hintStyle: const TextStyle(
-                          color: AssetColor.gray200,
-                          fontFamily: "Poppins",
-                          fontSize: 14),
-                      fillColor: AssetColor.gray100,
-                      filled: true,
-                      border: inputBorder,
-                      enabledBorder: inputBorder)),
+                textAlignVertical: TextAlignVertical.center,
+                style: Theme.of(context).textTheme.bodyMedium,
+                maxLines: null,
+                decoration: InputDecoration(
+                    hintText: AppLocalizations.of(context).typeMessage,
+                    hintStyle: const TextStyle(
+                        color: AssetColor.gray200,
+                        fontFamily: "Poppins",
+                        fontSize: 14),
+                    fillColor: AssetColor.gray100,
+                    filled: true,
+                    border: inputBorder,
+                    enabledBorder: inputBorder,
+                    suffixIcon: IconButton(
+                      icon: SvgPicture.asset(Assets.imagesIcGallery,
+                          colorFilter: const ColorFilter.mode(
+                              AssetColor.gray200, BlendMode.srcIn)),
+                      onPressed: () {
+                        //Todo implement open image
+                      },
+                    )),
+              ),
             ),
-            TextButton(
-                onPressed: () {},
-                child: Text(AppLocalizations.of(context).sendButton))
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    AppLocalizations.of(context).sendButton,
+                    style: const TextStyle(
+                        fontFamily: poppins,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  )),
+            )
           ],
         ),
       ),

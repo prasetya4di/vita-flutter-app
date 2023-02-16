@@ -120,5 +120,5 @@ flutter:
           weight: 100
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-SemiBold.ttf
-          weight: 500
+          weight: 600
 
