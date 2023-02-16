@@ -7,6 +7,7 @@ import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_state.dart';
 import 'package:vita_client_app/view/chat/widget/chat_reply.dart';
 import 'package:vita_client_app/view/chat/widget/chat_send.dart';
+import 'package:vita_client_app/view/chat/widget/chat_send_image.dart';
 import 'package:vita_client_app/view/chat/widget/chat_sending.dart';
 import 'package:vita_client_app/view/chat/widget/chat_text_field.dart';
 
@@ -46,6 +47,8 @@ class ChatScreen extends StatelessWidget {
                             var data = context.read<ChatBloc>().messages[i];
                             if (data.messageType == "reply") {
                               return ChatReply(message: data);
+                            } else if (data.fileType == "image") {
+                              return ChatSendImage(message: data);
                             } else {
                               return ChatSend(message: data);
                             }
