@@ -6,4 +6,10 @@ abstract class ImageRepository {
   Future<XFile?> pickImage(ImageSource source);
 
   Future<Response<List<ImagePossibility>>> scanImage(XFile image);
+
+  inserts(List<ImagePossibility> possibilities);
+
+  Future<List<ImagePossibility>> read();
+
+  Future<void> clear();
 }

@@ -20,4 +20,19 @@ class ImageRepositoryImpl implements ImageRepository {
   Future<Response<List<ImagePossibility>>> scanImage(XFile image) {
     return service.scanImage(image);
   }
+
+  @override
+  Future<void> clear() async {
+    dao.delete();
+  }
+
+  @override
+  inserts(List<ImagePossibility> possibilities) {
+    dao.inserts(possibilities);
+  }
+
+  @override
+  Future<List<ImagePossibility>> read() {
+    return dao.get();
+  }
 }
