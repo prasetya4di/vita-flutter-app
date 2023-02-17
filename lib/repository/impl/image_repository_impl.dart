@@ -18,7 +18,7 @@ class ImageRepositoryImpl implements ImageRepository {
 
   @override
   Future<Response<List<ImagePossibility>>> scanImage(XFile image) {
-    return service.scanImage(image);
+    return service.scanImage(image.path);
   }
 
   @override

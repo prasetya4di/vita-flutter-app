@@ -11,5 +11,6 @@ abstract class ImageService extends ChopperService {
   static ImageService create([ChopperClient? client]) => _$ImageService(client);
 
   @Post(path: "/${Dummy.email}")
-  Future<Response<List<ImagePossibility>>> scanImage(@PartFile() image);
+  Future<Response<List<ImagePossibility>>> scanImage(
+      @PartFile('image') String image);
 }
