@@ -13,5 +13,6 @@ class Assets {
   static const String imagesIcCamera = 'assets/images/ic_camera.svg';
   static const String imagesIcGallery = 'assets/images/ic_gallery.svg';
   static const String imagesIcInfoError = 'assets/images/ic_info_error.svg';
+  static const String imagesIcUpload = 'assets/images/ic_upload.svg';
   static const String imagesIcUser = 'assets/images/ic_user.svg';
 }

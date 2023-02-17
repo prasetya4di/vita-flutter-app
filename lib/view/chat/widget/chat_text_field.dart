@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:vita_client_app/generated/assets.dart';
 import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_state.dart';
+import 'package:vita_client_app/view/chat/widget/chat_select_media.dart';
 
 class ChatTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -57,13 +56,14 @@ class _ChatTextField extends State<ChatTextField> {
                     filled: true,
                     border: inputBorder,
                     enabledBorder: inputBorder,
-                    suffixIcon: IconButton(
-                      icon: SvgPicture.asset(Assets.imagesIcGallery,
-                          colorFilter: const ColorFilter.mode(
-                              AssetColor.gray200, BlendMode.srcIn)),
-                      onPressed: () {
-                        //Todo implement open image
+                    suffixIcon: ChatSelectMedia(
+                      onTap: () {
+                        setState(() {
+                          FocusScope.of(context).unfocus();
+                          widget.controller.clear();
+                        });
                       },
+                      onSelect: (imageSource) {},
                     )),
               ),
             ),
