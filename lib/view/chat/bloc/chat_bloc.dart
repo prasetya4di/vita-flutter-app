@@ -50,7 +50,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         uploadResult.fold(
             (failure) => emit(ChatState.error(failure.toString())), (data) {
           possibilities = data.possibilities;
-          messages.insertAll(0, data.messages);
+          messages.insertAll(0, data.messages.reversed);
           emit(const ChatState.imageUploadedState());
         });
       }

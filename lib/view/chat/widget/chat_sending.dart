@@ -21,13 +21,13 @@ class ChatSending extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(8),
               margin: const EdgeInsets.only(left: 8),
-              decoration: BoxDecoration(
-                  color: AssetColor.green100.withOpacity(0.5),
-                  borderRadius: const BorderRadius.all(Radius.circular(8))),
+              decoration: const BoxDecoration(
+                  color: AssetColor.green100,
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
               child: Text(
                 message,
-                style: TextStyle(
-                    fontFamily: poppins, color: Colors.black.withOpacity(0.5)),
+                style:
+                    const TextStyle(fontFamily: poppins, color: Colors.black),
               ),
             ),
           ),

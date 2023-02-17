@@ -38,6 +38,7 @@ class ChatScreen extends StatelessWidget {
             listener: (context, state) {},
             builder: (context, state) {
               var loadMessage = context.read<ChatBloc>().loadMessage;
+              var possibilities = context.read<ChatBloc>().possibilities;
               return SafeArea(
                 child: Column(
                   children: [
