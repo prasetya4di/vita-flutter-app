@@ -9,5 +9,6 @@
   "gallery": "Galeri",
   "textBadgeDate": "{date}",
   "uploadImageFailed": "Upload gambar gagal, klik di sini untuk mengirim ulang",
-  "sendMessageFailed": "Pesan gagal dikirim, klik di sini untuk mengirim ulang"
+  "sendMessageFailed": "Pesan gagal dikirim, klik di sini untuk mengirim ulang",
+  "scanningImage": "Mengenali gambar ..."
 }

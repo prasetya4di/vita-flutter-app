@@ -48,5 +48,9 @@
   "sendMessageFailed": "Failed to send message, click to retry",
   "@sendMessageFailed": {
     "description": "Error message for send message failed"
+  },
+  "scanningImage": "Scanning image ...",
+  "@scanningImage": {
+    "description": "Text for scanning image"
   }
 }

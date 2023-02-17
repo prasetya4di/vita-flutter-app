@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:vita_client_app/core/di.dart';
 import 'package:vita_client_app/data/model/entity/image_possibility.dart';
 import 'package:vita_client_app/data/model/entity/message.dart';
@@ -16,6 +17,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   List<Message> messages = [];
   List<ImagePossibility> possibilities = [];
   request.SendMessage? loadMessage;
+  XFile? selectedImage;
 
   ChatBloc() : super(const ChatInitialState()) {
     on<LoadMessageEvent>((event, emit) async {
@@ -46,6 +48,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       if (image == null) {
         emit(const ChatState.imageUploadCancelState());
       } else {
+        selectedImage = image;
+        emit(const ChatState.imageSelectedState());
         var uploadResult = await di<ScanImage>().call(image);
         uploadResult.fold(
             (failure) => emit(ChatState.error(failure.toString())), (data) {

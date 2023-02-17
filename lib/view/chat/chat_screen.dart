@@ -9,6 +9,7 @@ import 'package:vita_client_app/view/chat/widget/chat_reply.dart';
 import 'package:vita_client_app/view/chat/widget/chat_send.dart';
 import 'package:vita_client_app/view/chat/widget/chat_send_image.dart';
 import 'package:vita_client_app/view/chat/widget/chat_sending.dart';
+import 'package:vita_client_app/view/chat/widget/chat_sending_image.dart';
 import 'package:vita_client_app/view/chat/widget/chat_text_field.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -39,6 +40,7 @@ class ChatScreen extends StatelessWidget {
             builder: (context, state) {
               var loadMessage = context.read<ChatBloc>().loadMessage;
               var possibilities = context.read<ChatBloc>().possibilities;
+              var selectedImage = context.read<ChatBloc>().selectedImage;
               return SafeArea(
                 child: Column(
                   children: [
@@ -58,6 +60,8 @@ class ChatScreen extends StatelessWidget {
                             })),
                     if (loadMessage != null)
                       ChatSending(message: loadMessage.message),
+                    if (selectedImage != null)
+                      ChatSendingImage(file: selectedImage),
                     ChatTextField(controller: _controller)
                   ],
                 ),

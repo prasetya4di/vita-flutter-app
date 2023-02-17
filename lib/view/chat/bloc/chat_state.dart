@@ -26,6 +26,8 @@ abstract class ChatState with _$ChatState {
 
   const factory ChatState.messageSendedState() = ChatSendedState;
 
+  const factory ChatState.imageSelectedState() = ImageSelectedState;
+
   const factory ChatState.imageUploadState() = ImageUploadState;
 
   const factory ChatState.imageUploadCancelState() = ImageUploadCancelState;
