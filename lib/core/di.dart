@@ -16,6 +16,8 @@ import 'package:vita_client_app/domain/impl/load_message_impl.dart';
 import 'package:vita_client_app/domain/impl/send_message_impl.dart';
 import 'package:vita_client_app/domain/load_message.dart';
 import 'package:vita_client_app/domain/send_message.dart';
+import 'package:vita_client_app/repository/image_repository.dart';
+import 'package:vita_client_app/repository/impl/image_repository_impl.dart';
 import 'package:vita_client_app/repository/impl/message_repository_impl.dart';
 import 'package:vita_client_app/repository/message_repository.dart';
 
@@ -37,6 +39,8 @@ Future<void> setupDI() async {
   // repository
   di.registerSingleton<MessageRepository>(
       MessageRepositoryImpl(di.get(), di.get()));
+  di.registerSingleton<ImageRepository>(
+      ImageRepositoryImpl(di.get(), di.get()));
 
   // use case
   di.registerSingleton<FetchMessage>(FetchMessageImpl(di.get()));
