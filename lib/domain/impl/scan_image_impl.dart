@@ -10,7 +10,7 @@ class ScanImageImpl implements ScanImage {
   ScanImageImpl(this._repository);
 
   @override
-  Future<Either<Error, List<ImagePossibility>>> invoke(XFile image) async {
+  Future<Either<Error, List<ImagePossibility>>> call(XFile image) async {
     var response = await _repository.scanImage(image);
     if (response.isSuccessful && response.body != null) {
       var possibilities = response.body!;

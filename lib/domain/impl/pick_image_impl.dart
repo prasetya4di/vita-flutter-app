@@ -8,7 +8,7 @@ class PickImageImpl implements PickImage {
   PickImageImpl(this._repository);
 
   @override
-  Future<XFile?> invoke(ImageSource source) {
+  Future<XFile?> call(ImageSource source) {
     return _repository.pickImage(source);
   }
 }
