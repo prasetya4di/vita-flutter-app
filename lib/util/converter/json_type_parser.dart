@@ -1,5 +1,6 @@
 import 'package:vita_client_app/data/model/entity/image_possibility.dart';
 import 'package:vita_client_app/data/model/entity/message.dart';
+import 'package:vita_client_app/data/model/response/scanned_image.dart';
 import 'package:vita_client_app/util/converter/parser_exception.dart';
 
 typedef JsonFactory<T> = T Function(Map<String, dynamic> json);
@@ -7,7 +8,8 @@ typedef JsonFactory<T> = T Function(Map<String, dynamic> json);
 class JsonTypeParser {
   static const Map<Type, JsonFactory> factories = {
     Message: Message.fromJson,
-    ImagePossibility: ImagePossibility.fromJson
+    ImagePossibility: ImagePossibility.fromJson,
+    ScannedImage: ScannedImage.fromJson
   };
 
   static dynamic decode<T>(dynamic entity) {

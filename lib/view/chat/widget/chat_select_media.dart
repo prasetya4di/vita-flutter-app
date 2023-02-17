@@ -55,7 +55,7 @@ class _ChatSelectMedia extends State<ChatSelectMedia> {
   Widget build(BuildContext context) {
     return IconButton(
       key: overlayKey,
-      icon: SvgPicture.asset(Assets.imagesIcGallery,
+      icon: SvgPicture.asset(Assets.imagesIcArchive,
           colorFilter: ColorFilter.mode(
               isMenuOpen ? Colors.black : AssetColor.gray200, BlendMode.srcIn)),
       onPressed: () {
@@ -73,7 +73,7 @@ class _ChatSelectMedia extends State<ChatSelectMedia> {
     return OverlayEntry(
       builder: (context) {
         return Positioned(
-          top: 555,
+          top: buttonPosition.dy - buttonSize.height * 1.3,
           left: buttonPosition.dx - (buttonSize.width / 2) - 32,
           child: Card(
             margin: const EdgeInsets.all(8),

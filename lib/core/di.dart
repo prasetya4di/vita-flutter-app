@@ -56,6 +56,6 @@ Future<void> setupDI() async {
   di.registerSingleton<LoadMessage>(LoadMessageImpl(di.get()));
   di.registerSingleton<SendMessage>(SendMessageImpl(di.get()));
   di.registerSingleton<PickImage>(PickImageImpl(di.get()));
-  di.registerSingleton<ScanImage>(ScanImageImpl(di.get()));
+  di.registerSingleton<ScanImage>(ScanImageImpl(di.get(), di.get()));
   di.registerSingleton<LoadPossibility>(LoadPossibilityImpl(di.get()));
 }

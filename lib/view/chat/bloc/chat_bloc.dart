@@ -49,7 +49,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         var uploadResult = await di<ScanImage>().call(image);
         uploadResult.fold(
             (failure) => emit(ChatState.error(failure.toString())), (data) {
-          possibilities = data;
+          possibilities = data.possibilities;
+          messages.insertAll(0, data.messages);
           emit(const ChatState.imageUploadedState());
         });
       }

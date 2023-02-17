@@ -1,22 +1,25 @@
 import 'package:either_dart/either.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:vita_client_app/data/model/entity/image_possibility.dart';
+import 'package:vita_client_app/data/model/response/scanned_image.dart';
 import 'package:vita_client_app/domain/scan_image.dart';
 import 'package:vita_client_app/repository/image_repository.dart';
+import 'package:vita_client_app/repository/message_repository.dart';
 
 class ScanImageImpl implements ScanImage {
   final ImageRepository _repository;
+  final MessageRepository _messageRepository;
 
-  ScanImageImpl(this._repository);
+  ScanImageImpl(this._repository, this._messageRepository);
 
   @override
-  Future<Either<Error, List<ImagePossibility>>> call(XFile image) async {
+  Future<Either<Error, ScannedImage>> call(XFile image) async {
     var response = await _repository.scanImage(image);
     if (response.isSuccessful && response.body != null) {
-      var possibilities = response.body!;
+      var result = response.body!;
       await _repository.clear();
-      _repository.inserts(possibilities);
-      return Right(possibilities);
+      _messageRepository.inserts(result.messages);
+      _repository.inserts(result.possibilities);
+      return Right(result);
     } else {
       return Left(response.error! as Error);
     }

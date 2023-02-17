@@ -47,5 +47,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Vita need access to your photo library to scan your picture and explain about it</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Vita need access to your camera to take a picture and explain about it</string>
 </dict>
 </plist>

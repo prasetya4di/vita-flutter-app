@@ -31,7 +31,7 @@ class _ChatTextField extends State<ChatTextField> {
               color: Colors.black.withOpacity(0.06),
               spreadRadius: 0,
               blurRadius: 8,
-              offset: const Offset(0, 0))
+              offset: const Offset(0, -8))
         ]),
         child: Row(
           children: [

@@ -49,15 +49,9 @@
     },
     {
       "id": "2:7297303345995904294",
-      "lastPropertyId": "3:3250881128189785894",
+      "lastPropertyId": "4:2714368319505654755",
       "name": "ImagePossibility",
       "properties": [
-        {
-          "id": "1:6732175492865245919",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
         {
           "id": "2:5930247405499781713",
           "name": "type",
@@ -67,6 +61,12 @@
           "id": "3:3250881128189785894",
           "name": "description",
           "type": 9
+        },
+        {
+          "id": "4:2714368319505654755",
+          "name": "obxId",
+          "type": 6,
+          "flags": 1
         }
       ],
       "relations": []
@@ -80,7 +80,9 @@
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    6732175492865245919
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

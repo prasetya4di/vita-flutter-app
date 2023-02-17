@@ -7,11 +7,12 @@ part 'image_possibility.g.dart';
 @Entity()
 class ImagePossibility {
   @Id()
-  int id;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  int obxId = 0;
   String type;
   String description;
 
-  ImagePossibility(this.id, this.type, this.description);
+  ImagePossibility(this.type, this.description);
 
   factory ImagePossibility.fromJson(Map<String, dynamic> json) =>
       _$ImagePossibilityFromJson(json);
