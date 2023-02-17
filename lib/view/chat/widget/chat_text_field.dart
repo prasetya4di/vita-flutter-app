@@ -63,7 +63,9 @@ class _ChatTextField extends State<ChatTextField> {
                           widget.controller.clear();
                         });
                       },
-                      onSelect: (imageSource) {},
+                      onSelect: (source) {
+                        context.read<ChatBloc>().add(ScanImageEvent(source));
+                      },
                     )),
               ),
             ),
