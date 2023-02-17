@@ -15,9 +15,11 @@ import 'package:vita_client_app/domain/fetch_message.dart';
 import 'package:vita_client_app/domain/impl/fetch_message_impl.dart';
 import 'package:vita_client_app/domain/impl/load_message_impl.dart';
 import 'package:vita_client_app/domain/impl/pick_image_impl.dart';
+import 'package:vita_client_app/domain/impl/scan_image_impl.dart';
 import 'package:vita_client_app/domain/impl/send_message_impl.dart';
 import 'package:vita_client_app/domain/load_message.dart';
 import 'package:vita_client_app/domain/pick_image.dart';
+import 'package:vita_client_app/domain/scan_image.dart';
 import 'package:vita_client_app/domain/send_message.dart';
 import 'package:vita_client_app/repository/image_repository.dart';
 import 'package:vita_client_app/repository/impl/image_repository_impl.dart';
@@ -52,4 +54,5 @@ Future<void> setupDI() async {
   di.registerSingleton<LoadMessage>(LoadMessageImpl(di.get()));
   di.registerSingleton<SendMessage>(SendMessageImpl(di.get()));
   di.registerSingleton<PickImage>(PickImageImpl(di.get()));
+  di.registerSingleton<ScanImage>(ScanImageImpl(di.get()));
 }
