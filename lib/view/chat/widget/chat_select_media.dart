@@ -77,7 +77,7 @@ class _ChatSelectMedia extends State<ChatSelectMedia> {
           left: buttonPosition.dx - (buttonSize.width / 2) - 32,
           child: Card(
             margin: const EdgeInsets.all(8),
-            elevation: 1,
+            elevation: 4,
             child: Row(
               children: [
                 mediaButton(

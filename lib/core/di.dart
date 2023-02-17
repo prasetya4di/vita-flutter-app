@@ -1,6 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:objectbox/objectbox.dart';
 import 'package:vita_client_app/data/model/entity/message.dart';
+import 'package:vita_client_app/data/source/local/image_dao.dart';
+import 'package:vita_client_app/data/source/local/impl/image_dao_impl.dart';
 import 'package:vita_client_app/data/source/local/impl/message_dao_impl.dart';
 import 'package:vita_client_app/data/source/local/message_dao.dart';
 import 'package:vita_client_app/data/source/local/objectbox.dart';
@@ -21,8 +24,10 @@ final di = GetIt.I;
 Future<void> setupDI() async {
   // dao
   final objectBox = await ObjectBox.create();
+  final imagePicker = ImagePicker();
   di.registerSingleton<Box<Message>>(objectBox.store.box<Message>());
   di.registerSingleton<MessageDao>(MessageDaoImpl(di.get()));
+  di.registerSingleton<ImageDao>(ImageDaoImpl(imagePicker));
 
   // service
   di.registerSingleton<MessageService>(
