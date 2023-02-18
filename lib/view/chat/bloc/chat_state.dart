@@ -10,6 +10,8 @@ abstract class ChatEvent with _$ChatEvent {
   const factory ChatEvent.onSendMessage(String message) = SendMessageEvent;
 
   const factory ChatEvent.onScanImage(ImageSource source) = ScanImageEvent;
+
+  const factory ChatEvent.onReplyMessage(String message) = ReplyMessageEvent;
 }
 
 @freezed

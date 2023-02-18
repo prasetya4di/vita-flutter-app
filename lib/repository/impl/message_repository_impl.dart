@@ -1,5 +1,6 @@
 import 'package:chopper/src/response.dart';
 import 'package:vita_client_app/data/model/entity/message.dart';
+import 'package:vita_client_app/data/model/request/reply_message.dart';
 import 'package:vita_client_app/data/model/request/send_message.dart';
 import 'package:vita_client_app/data/source/local/message_dao.dart';
 import 'package:vita_client_app/data/source/network/message_service.dart';
@@ -27,7 +28,7 @@ class MessageRepositoryImpl extends MessageRepository {
   }
 
   @override
-  Future<Response<List<Message>>> replyMessage(SendMessage request) {
+  Future<Response<List<Message>>> replyMessage(ReplyMessage request) {
     return _messageService.replyMessage(request);
   }
 
