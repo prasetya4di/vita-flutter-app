@@ -23,7 +23,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       var loadPossibilityResult = await di<LoadPossibility>().call();
       messages.clear();
       messages.insertAll(0, loadMessageResult);
-      messages.insert(0, loadPossibilityResult);
+      if (loadPossibilityResult.length > 1) {
+        messages.insert(0, loadPossibilityResult);
+      }
       emit(const ChatState.loadedState());
     });
 
