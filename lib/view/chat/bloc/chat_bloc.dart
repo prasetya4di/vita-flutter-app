@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:vita_client_app/core/di.dart';
 import 'package:vita_client_app/data/model/entity/image_possibility.dart';
-import 'package:vita_client_app/data/model/entity/message.dart';
 import 'package:vita_client_app/data/model/request/send_message.dart'
     as request;
 import 'package:vita_client_app/domain/load_message.dart';
@@ -14,10 +12,8 @@ import 'package:vita_client_app/util/constant/dummy.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  List<Message> messages = [];
+  List<dynamic> messages = [];
   List<ImagePossibility> possibilities = [];
-  request.SendMessage? loadMessage;
-  XFile? selectedImage;
 
   ChatBloc() : super(const ChatInitialState()) {
     on<LoadMessageEvent>((event, emit) async {
@@ -32,12 +28,12 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<SendMessageEvent>((event, emit) async {
       emit(const ChatState.messageSendingState());
       var message = request.SendMessage(Dummy.email, event.message);
-      loadMessage = message;
+      messages.insert(0, message);
       var sendMessageResult = await di<SendMessage>().call(message);
       sendMessageResult
           .fold((failure) => emit(ChatState.error(failure.toString())), (data) {
+        messages.removeAt(0);
         messages.insertAll(0, data.reversed.toList());
-        loadMessage = null;
         emit(const ChatState.messageSendedState());
       });
     });
@@ -48,13 +44,12 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       if (image == null) {
         emit(const ChatState.imageUploadCancelState());
       } else {
-        selectedImage = image;
+        messages.insert(0, image);
         emit(const ChatState.imageSelectedState());
         var uploadResult = await di<ScanImage>().call(image);
         uploadResult.fold(
             (failure) => emit(ChatState.error(failure.toString())), (data) {
-          possibilities = data.possibilities;
-          selectedImage = null;
+          messages.removeAt(0);
           messages.insertAll(0, data.messages.reversed);
           emit(const ChatState.imageUploadedState());
         });

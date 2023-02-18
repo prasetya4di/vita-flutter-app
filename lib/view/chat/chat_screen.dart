@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:vita_client_app/data/model/entity/message.dart';
+import 'package:vita_client_app/data/model/request/send_message.dart';
 import 'package:vita_client_app/generated/assets.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
@@ -38,9 +41,7 @@ class ChatScreen extends StatelessWidget {
         body: BlocConsumer<ChatBloc, ChatState>(
             listener: (context, state) {},
             builder: (context, state) {
-              var loadMessage = context.read<ChatBloc>().loadMessage;
               var possibilities = context.read<ChatBloc>().possibilities;
-              var selectedImage = context.read<ChatBloc>().selectedImage;
               return SafeArea(
                 child: Column(
                   children: [
@@ -50,18 +51,21 @@ class ChatScreen extends StatelessWidget {
                             itemCount: context.read<ChatBloc>().messages.length,
                             itemBuilder: (context, i) {
                               var data = context.read<ChatBloc>().messages[i];
-                              if (data.messageType == "reply") {
-                                return ChatReply(message: data);
-                              } else if (data.fileType == "image") {
-                                return ChatSendImage(message: data);
-                              } else {
-                                return ChatSend(message: data);
+                              if (data is Message) {
+                                if (data.messageType == "reply") {
+                                  return ChatReply(message: data);
+                                } else if (data.fileType == "image") {
+                                  return ChatSendImage(message: data);
+                                } else {
+                                  return ChatSend(message: data);
+                                }
+                              } else if (data is SendMessage) {
+                                return ChatSending(message: data.message);
+                              } else if (data is XFile) {
+                                return ChatSendingImage(file: data);
                               }
+                              return null;
                             })),
-                    if (loadMessage != null)
-                      ChatSending(message: loadMessage.message),
-                    if (selectedImage != null)
-                      ChatSendingImage(file: selectedImage),
                     ChatTextField(controller: _controller)
                   ],
                 ),
