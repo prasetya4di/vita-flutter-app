@@ -28,6 +28,10 @@ abstract class ChatState with _$ChatState {
 
   const factory ChatState.messageSendedState() = ChatSendedState;
 
+  const factory ChatState.replyMessageSendingState() = ChatReplySendingState;
+
+  const factory ChatState.replyMessageSendedState() = ChatReplySendedState;
+
   const factory ChatState.imageSelectedState() = ImageSelectedState;
 
   const factory ChatState.imageUploadState() = ImageUploadState;

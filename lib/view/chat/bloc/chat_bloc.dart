@@ -1,10 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vita_client_app/core/di.dart';
+import 'package:vita_client_app/data/model/request/reply_message.dart'
+    as request2;
 import 'package:vita_client_app/data/model/request/send_message.dart'
     as request;
 import 'package:vita_client_app/domain/load_message.dart';
 import 'package:vita_client_app/domain/load_possibility.dart';
 import 'package:vita_client_app/domain/pick_image.dart';
+import 'package:vita_client_app/domain/reply_message.dart';
 import 'package:vita_client_app/domain/scan_image.dart';
 import 'package:vita_client_app/domain/send_message.dart';
 import 'package:vita_client_app/util/constant/dummy.dart';
@@ -56,6 +59,20 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
           emit(const ChatState.imageUploadedState());
         });
       }
+    });
+
+    on<ReplyMessageEvent>((event, emit) async {
+      emit(const ChatState.replyMessageSendingState());
+      var message = request2.ReplyMessage(Dummy.email, event.message);
+      messages.removeAt(0);
+      messages.insert(0, message);
+      var sendMessageResult = await di<ReplyMessage>().call(message);
+      sendMessageResult
+          .fold((failure) => emit(ChatState.error(failure.toString())), (data) {
+        messages.removeAt(0);
+        messages.insertAll(0, data.reversed.toList());
+        emit(const ChatState.replyMessageSendedState());
+      });
     });
   }
 }
