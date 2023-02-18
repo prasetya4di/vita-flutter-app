@@ -52,5 +52,13 @@
   "scanningImage": "Scanning image ...",
   "@scanningImage": {
     "description": "Text for scanning image"
+  },
+  "textSelect": "Select",
+  "@textSelect": {
+    "description": "Text for button select"
+  },
+  "textPossibilitiesFound": "Hi, Vita read and recognise these things in your picture, please help me to choose which one is correct, and Vita'll describe it",
+  "@textPossibilitiesFound": {
+    "description": "Text for button select"
   }
 }

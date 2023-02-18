@@ -10,5 +10,7 @@
   "textBadgeDate": "{date}",
   "uploadImageFailed": "Upload gambar gagal, klik di sini untuk mengirim ulang",
   "sendMessageFailed": "Pesan gagal dikirim, klik di sini untuk mengirim ulang",
-  "scanningImage": "Mengenali gambar ..."
+  "scanningImage": "Mengenali gambar ...",
+  "textSelect": "Pilih",
+  "textPossibilitiesFound": "Hi, Vita menemukan beberapa penjelasan dari gambar yang kamu kirim, tolong bantu Vita memilih manakah yang paling sesuai dengan gambar yang kamu kirim, dan Vita akan memberikan penjelasan lebih lanjut"
 }

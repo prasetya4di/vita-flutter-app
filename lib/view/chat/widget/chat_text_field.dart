@@ -50,7 +50,7 @@ class _ChatTextField extends State<ChatTextField> {
                     hintText: AppLocalizations.of(context).typeMessage,
                     hintStyle: const TextStyle(
                         color: AssetColor.gray200,
-                        fontFamily: "Poppins",
+                        fontFamily: poppins,
                         fontSize: 14),
                     fillColor: AssetColor.gray100,
                     filled: true,
