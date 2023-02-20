@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:vita_client_app/data/model/entity/message.dart';
-import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 import 'package:vita_client_app/view/chat/widget/chat_text_time.dart';
 
@@ -31,9 +31,9 @@ class ChatReply extends StatelessWidget {
                         spreadRadius: 0,
                         offset: const Offset(0, 0))
                   ]),
-              child: Text(
-                message.message,
-                style: const TextStyle(fontFamily: poppins),
+              child: MarkdownBody(
+                data: message.message,
+                selectable: true,
               ),
             ),
           ),
