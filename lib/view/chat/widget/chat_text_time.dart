@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:vita_client_app/util/constant/font.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 
@@ -9,7 +10,7 @@ class ChatTextTime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("${time.hour}.${time.minute}",
+    return Text(DateFormat('kk:mm').format(time),
         style: const TextStyle(
             fontFamily: poppins,
             fontSize: 10,
