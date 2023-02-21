@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vita_client_app/util/constant/routes.dart';
 import 'package:vita_client_app/view/splash/bloc/splash_bloc.dart';
 import 'package:vita_client_app/view/splash/bloc/splash_state.dart';
+import 'package:vita_client_app/view/widgets/image_logo.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -15,17 +16,26 @@ class SplashScreen extends StatelessWidget {
 
     return BlocConsumer<SplashBloc, SplashState>(builder: (context, state) {
       return Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("I <3 Pras"),
-            if (state is SplashLoadingState) const CircularProgressIndicator(),
-            if (state is SplashLoadingState)
-              Text(
-                AppLocalizations.of(context).fetchingInformation,
-                style: Theme.of(context).textTheme.titleMedium,
-              )
-          ],
+        body: SafeArea(
+          child: SizedBox.expand(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const ImageLogo(),
+                if (state is SplashLoadingState)
+                  const CircularProgressIndicator(),
+                if (state is SplashLoadingState)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      AppLocalizations.of(context).fetchingInformation,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  )
+              ],
+            ),
+          ),
         ),
       );
     }, listener: (context, state) {
