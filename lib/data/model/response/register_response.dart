@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vita_client_app/data/model/entity/user.dart';
 
+part 'register_response.g.dart';
+
 @JsonSerializable()
 class RegisterResponse {
   User user;
