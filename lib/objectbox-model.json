@@ -70,9 +70,48 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "3:2455832266671995054",
+      "lastPropertyId": "6:8603907611729136797",
+      "name": "User",
+      "properties": [
+        {
+          "id": "1:6930992204829975564",
+          "name": "obxId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3003695432685599871",
+          "name": "email",
+          "type": 9
+        },
+        {
+          "id": "3:7663916223444954033",
+          "name": "firstName",
+          "type": 9
+        },
+        {
+          "id": "4:5792600202962528078",
+          "name": "lastName",
+          "type": 9
+        },
+        {
+          "id": "5:8286330004231216006",
+          "name": "nickname",
+          "type": 9
+        },
+        {
+          "id": "6:8603907611729136797",
+          "name": "birthDate",
+          "type": 10
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "2:7297303345995904294",
+  "lastEntityId": "3:2455832266671995054",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
