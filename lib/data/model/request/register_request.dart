@@ -6,9 +6,12 @@ part 'register_request.g.dart';
 class RegisterRequest {
   String email;
   String password;
+  @JsonKey(name: "first_name")
   String firstName;
+  @JsonKey(name: "last_name")
   String lastName;
   String nickname;
+  @JsonKey(name: "birth_date")
   DateTime birthDate;
 
   RegisterRequest(this.email, this.password, this.firstName, this.lastName,
