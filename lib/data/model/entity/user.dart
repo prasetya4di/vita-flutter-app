@@ -17,9 +17,10 @@ class User {
   String nickname;
   @JsonKey(name: "birth_date")
   DateTime birthDate;
+  String token;
 
-  User(
-      this.email, this.firstName, this.lastName, this.nickname, this.birthDate);
+  User(this.email, this.firstName, this.lastName, this.nickname, this.birthDate,
+      this.token);
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
