@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
+import 'package:vita_client_app/generated/assets.dart';
+import 'package:vita_client_app/view/widgets/user_form_field.dart';
+
+class BirthdateFormField extends StatefulWidget {
+  const BirthdateFormField({super.key});
+
+  @override
+  State<BirthdateFormField> createState() => _BirthdateFormField();
+}
+
+class _BirthdateFormField extends State<BirthdateFormField> {
+  final TextEditingController _birthdateController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () async {
+        DateTime? pickedDate = await showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1950),
+            lastDate: DateTime.now());
+        if (pickedDate != null) {
+          String formattedDate = DateFormat('dd MMM yyyy').format(pickedDate);
+
+          setState(() {
+            _birthdateController.text = formattedDate;
+          });
+        }
+      },
+      child: UserFormField(
+        controller: _birthdateController,
+        enabled: false,
+        label: "Birth Date",
+        validator: _validateBirthdate,
+        suffix: IconButton(
+            padding: const EdgeInsets.all(0),
+            onPressed: null,
+            icon: SvgPicture.asset(Assets.imagesIcCalendar)),
+      ),
+    );
+  }
+
+  String? _validateBirthdate(String? value) {
+    if (value != null && value.isEmpty) {
+      return "Please choose your birth date";
+    } else {
+      return null;
+    }
+  }
+}
