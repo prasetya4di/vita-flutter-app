@@ -70,5 +70,16 @@
   "textLastName": "Last Name",
   "textNickname": "Nickname",
   "textBirthday": "Birthday",
-  "textAgreeToUserAgreementAndPrivacyPolicy": "I have read and agree to Vita’s user agreement and privacy policy"
+  "textAgreeToUserAgreementAndPrivacyPolicy": "I have read and agree to Vita’s user agreement and privacy policy",
+  "textOr": "or",
+  "textEmptyEmail": "Please enter a valid email.",
+  "textEmptyPassword": "Please enter a valid password.",
+  "textEmptyFirstName": "Please enter your first name.",
+  "textEmptyLastName": "Please enter your last name.",
+  "textEmptyNickname": "Please enter your nickname.",
+  "textEmptyBirthday": "Please enter your birthday.",
+  "textPasswordMinimum": "Please enter at least 8 characters",
+  "textPasswordMustContain": "Password must contain at least one uppercase, \nlowercase, number, and a special character.",
+  "textEmptyRepeatPassword": "Please repeat your password.",
+  "textIncorrectRepeatPassword": "Password does not match."
 }

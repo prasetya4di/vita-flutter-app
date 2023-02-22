@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vita_client_app/view/widgets/user_form_field.dart';
 
-class NickNameFormField extends StatefulWidget {
-  const NickNameFormField({super.key});
+class NicknameFormField extends StatefulWidget {
+  const NicknameFormField({super.key});
 
   @override
-  State<NickNameFormField> createState() => _NickNameFormField();
+  State<NicknameFormField> createState() => _NickNameFormField();
 }
 
-class _NickNameFormField extends State<NickNameFormField> {
+class _NickNameFormField extends State<NicknameFormField> {
   @override
   Widget build(BuildContext context) {
-    return UserFormField(label: "Nickname", validator: _validateNickname);
+    return UserFormField(
+        label: AppLocalizations.of(context).textNickname,
+        validator: _validateNickname);
   }
 
   String? _validateNickname(String? value) {
     if (value != null && value.isEmpty) {
-      return "Please fill nickname";
+      return AppLocalizations.of(context).textEmptyNickname;
     } else {
       return null;
     }

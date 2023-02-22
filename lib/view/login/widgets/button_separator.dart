@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ButtonSeparator extends StatelessWidget {
   const ButtonSeparator({super.key});
@@ -14,7 +15,8 @@ class ButtonSeparator extends StatelessWidget {
         )),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-          child: Text("or", style: Theme.of(context).textTheme.labelLarge),
+          child: Text(AppLocalizations.of(context).textOr,
+              style: Theme.of(context).textTheme.labelLarge),
         ),
         const Expanded(
             child: Divider(

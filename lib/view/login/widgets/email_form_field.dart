@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vita_client_app/view/widgets/input_border.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
@@ -15,7 +16,8 @@ class _EmailFormField extends State<EmailFormField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Email", style: Theme.of(context).textTheme.labelMedium),
+        Text(AppLocalizations.of(context).textEmail,
+            style: Theme.of(context).textTheme.labelMedium),
         const SpaceVertical(),
         TextFormField(
           keyboardType: TextInputType.emailAddress,
@@ -44,7 +46,7 @@ class _EmailFormField extends State<EmailFormField> {
     final regex = RegExp(pattern);
 
     return value!.isNotEmpty && !regex.hasMatch(value)
-        ? 'Enter a valid email address'
+        ? AppLocalizations.of(context).textEmptyEmail
         : null;
   }
 }

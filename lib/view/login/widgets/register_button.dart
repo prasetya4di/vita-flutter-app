@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vita_client_app/util/constant/font.dart';
 
 class RegisterButton extends StatelessWidget {
@@ -13,9 +14,9 @@ class RegisterButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(45),
           padding: const EdgeInsets.all(12)),
-      child: const Text(
-        "Sign Up",
-        style: TextStyle(
+      child: Text(
+        AppLocalizations.of(context).textSignUp,
+        style: const TextStyle(
             color: Colors.white,
             fontSize: 16,
             fontFamily: poppins,

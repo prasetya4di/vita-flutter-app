@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 import 'package:vita_client_app/view/widgets/user_form_field.dart';
 
@@ -20,13 +21,13 @@ class _PasswordsFormField extends State<PasswordsFormField> {
       children: [
         UserFormField(
             obscureText: true,
-            label: "Password",
+            label: AppLocalizations.of(context).textPassword,
             controller: _passwordController,
             validator: _validatePassword),
         const SpaceVertical(),
         UserFormField(
             obscureText: true,
-            label: "Repeat Password",
+            label: AppLocalizations.of(context).textRepeatPassword,
             controller: _repeatPasswordController,
             validator: _validateRepeatPassword)
       ],
@@ -38,11 +39,11 @@ class _PasswordsFormField extends State<PasswordsFormField> {
         RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
 
     if (value != null && value.isEmpty) {
-      return "Please enter a password";
+      return AppLocalizations.of(context).textEmptyPassword;
     } else if (value!.length < 8) {
-      return "Please enter at least 8 characters";
+      return AppLocalizations.of(context).textPasswordMinimum;
     } else if (!regex.hasMatch(value)) {
-      return "Password should contain at least one uppercase, \nlowercase, number, and a special character.";
+      return AppLocalizations.of(context).textPasswordMustContain;
     } else {
       return null;
     }
@@ -50,9 +51,9 @@ class _PasswordsFormField extends State<PasswordsFormField> {
 
   String? _validateRepeatPassword(String? value) {
     if (value != null && value.isEmpty) {
-      return "Please repeat your password";
+      return AppLocalizations.of(context).textEmptyRepeatPassword;
     } else if (value != _passwordController.value.text) {
-      return "Please enter the same password";
+      return AppLocalizations.of(context).textIncorrectRepeatPassword;
     } else {
       return null;
     }

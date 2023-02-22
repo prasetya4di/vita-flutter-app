@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vita_client_app/view/widgets/input_border.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
@@ -15,7 +16,8 @@ class _PasswordFormField extends State<PasswordFormField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Password", style: Theme.of(context).textTheme.labelMedium),
+        Text(AppLocalizations.of(context).textPassword,
+            style: Theme.of(context).textTheme.labelMedium),
         const SpaceVertical(),
         TextFormField(
           keyboardType: TextInputType.visiblePassword,
@@ -35,6 +37,8 @@ class _PasswordFormField extends State<PasswordFormField> {
   }
 
   String? _validatePassword(String? value) {
-    return value!.isEmpty ? 'Enter a valid password' : null;
+    return value!.isEmpty
+        ? AppLocalizations.of(context).textEmptyPassword
+        : null;
   }
 }

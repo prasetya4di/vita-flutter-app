@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:vita_client_app/generated/assets.dart';
@@ -34,7 +35,7 @@ class _BirthdateFormField extends State<BirthdateFormField> {
       child: UserFormField(
         controller: _birthdateController,
         enabled: false,
-        label: "Birthday",
+        label: AppLocalizations.of(context).textBirthday,
         validator: _validateBirthdate,
         suffix: IconButton(
             padding: const EdgeInsets.all(0),
@@ -46,7 +47,7 @@ class _BirthdateFormField extends State<BirthdateFormField> {
 
   String? _validateBirthdate(String? value) {
     if (value != null && value.isEmpty) {
-      return "Please choose your birth date";
+      return AppLocalizations.of(context).textEmptyBirthday;
     } else {
       return null;
     }

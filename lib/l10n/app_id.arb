@@ -22,5 +22,16 @@
   "textLastName": "Nama Belakang",
   "textNickname": "Nama Panggilan",
   "textBirthday": "Tanggal Ulang Tahun",
-  "textAgreeToUserAgreementAndPrivacyPolicy": "Saya telah membaca dan menyetujui persetujuan pengguna dan kebijakan privasi"
+  "textAgreeToUserAgreementAndPrivacyPolicy": "Saya telah membaca dan menyetujui persetujuan pengguna dan kebijakan privasi",
+  "textOr": "atau",
+  "textEmptyEmail": "E-mail belum diisi.",
+  "textEmptyPassword": "Password belum diisi.",
+  "textEmptyFirstName": "Nama depan belum diisi.",
+  "textEmptyLastName": "Nama belakang belum diisi.",
+  "textEmptyNickname": "Nama panggilan belum diisi.",
+  "textEmptyBirthday": "Tanggal ulang tahun belum diisi.",
+  "textPasswordMinimum": "Password harus lebih dari 8 karakter",
+  "textPasswordMustContain": "Password harus mengandung setidaknya satu huruf besar, \n angka, dan karakter spesial.",
+  "textEmptyRepeatPassword": "Ulangi password anda.",
+  "textIncorrectRepeatPassword": "Password tidak sesuai."
 }
