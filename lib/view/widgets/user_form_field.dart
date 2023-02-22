@@ -22,7 +22,7 @@ class UserFormField extends StatefulWidget {
       this.suffix,
       this.obscureText = false,
       this.controller,
-      this.enabled = false});
+      this.enabled = true});
 
   @override
   State<UserFormField> createState() => _UserFormField();

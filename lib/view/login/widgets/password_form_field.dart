@@ -35,17 +35,6 @@ class _PasswordFormField extends State<PasswordFormField> {
   }
 
   String? _validatePassword(String? value) {
-    final regex =
-        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-
-    if (value != null && value.isEmpty) {
-      return "Please fill password";
-    } else if (value!.length < 8) {
-      return "Please enter at least 8 characters";
-    } else if (!regex.hasMatch(value)) {
-      return "Password should contain at least one uppercase, \nlowercase, number, and a special character.";
-    } else {
-      return null;
-    }
+    return value!.isEmpty ? 'Enter a valid password' : null;
   }
 }

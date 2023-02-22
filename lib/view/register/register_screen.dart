@@ -5,6 +5,7 @@ import 'package:vita_client_app/view/register/widgets/birthdate_form_field.dart'
 import 'package:vita_client_app/view/register/widgets/first_name_form_field.dart';
 import 'package:vita_client_app/view/register/widgets/last_name_form_field.dart';
 import 'package:vita_client_app/view/register/widgets/nickname_form_field.dart';
+import 'package:vita_client_app/view/register/widgets/passwords_form_field.dart';
 import 'package:vita_client_app/view/widgets/image_logo.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
@@ -39,6 +40,8 @@ class _RegisterScreen extends State<RegisterScreen> {
                   const NickNameFormField(),
                   const SpaceVertical(),
                   const BirthdateFormField(),
+                  const SpaceVertical(),
+                  const PasswordsFormField(),
                   const SpaceVertical(size: 16),
                   RegisterButton(onPressed: () {})
                 ],
