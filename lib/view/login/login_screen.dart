@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vita_client_app/util/constant/routes.dart';
 import 'package:vita_client_app/view/login/widgets/button_separator.dart';
 import 'package:vita_client_app/view/login/widgets/email_form_field.dart';
 import 'package:vita_client_app/view/login/widgets/login_button.dart';
@@ -37,7 +38,9 @@ class _LoginScreen extends State<LoginScreen> {
                 const SpaceVertical(),
                 const ButtonSeparator(),
                 const SpaceVertical(),
-                const RegisterButton()
+                RegisterButton(onPressed: () {
+                  Navigator.pushNamed(context, Routes.register);
+                })
               ],
             ),
           ),

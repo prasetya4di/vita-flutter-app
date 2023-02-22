@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:vita_client_app/util/constant/font.dart';
-import 'package:vita_client_app/util/constant/routes.dart';
 
 class RegisterButton extends StatelessWidget {
-  const RegisterButton({super.key});
+  final void Function() onPressed;
+
+  const RegisterButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(context, Routes.register);
-      },
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(45),
           padding: const EdgeInsets.all(12)),
