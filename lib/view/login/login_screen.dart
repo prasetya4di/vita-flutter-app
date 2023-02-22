@@ -3,6 +3,7 @@ import 'package:vita_client_app/view/login/widgets/button_separator.dart';
 import 'package:vita_client_app/view/login/widgets/email_form_field.dart';
 import 'package:vita_client_app/view/login/widgets/login_button.dart';
 import 'package:vita_client_app/view/login/widgets/password_form_field.dart';
+import 'package:vita_client_app/view/login/widgets/register_button.dart';
 import 'package:vita_client_app/view/widgets/image_logo.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
@@ -33,8 +34,10 @@ class _LoginScreen extends State<LoginScreen> {
                 const PasswordFormField(),
                 const SpaceVertical(size: 32),
                 LoginButton(onPressed: () {}),
-                const SpaceVertical(size: 16),
+                const SpaceVertical(),
                 const ButtonSeparator(),
+                const SpaceVertical(),
+                const RegisterButton()
               ],
             ),
           ),
