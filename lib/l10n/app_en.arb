@@ -60,5 +60,15 @@
   "textPossibilitiesFound": "Hi, Vita read and recognise these things in your picture, please help me to choose which one is correct, and Vita'll describe it",
   "@textPossibilitiesFound": {
     "description": "Text for button select"
-  }
+  },
+  "textLogin": "Login",
+  "textSignUp": "Sign Up",
+  "textEmail": "E-mail",
+  "textPassword": "Password",
+  "textRepeatPassword": "Repeat Password",
+  "textFirstName": "First Name",
+  "textLastName": "Last Name",
+  "textNickname": "Nickname",
+  "textBirthday": "Birthday",
+  "textAgreeToUserAgreementAndPrivacyPolicy": "I have read and agree to Vita’s user agreement and privacy policy"
 }
