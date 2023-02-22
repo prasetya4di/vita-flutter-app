@@ -23,7 +23,6 @@ class _EmailFormField extends State<EmailFormField> {
           decoration: InputDecoration(
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 16, horizontal: 18),
-            filled: true,
             border: defaultInputBorder,
             enabledBorder: defaultInputBorder,
           ),

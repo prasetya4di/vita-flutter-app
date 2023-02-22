@@ -24,7 +24,6 @@ class _PasswordFormField extends State<PasswordFormField> {
           decoration: InputDecoration(
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 16, horizontal: 18),
-            filled: true,
             border: defaultInputBorder,
             enabledBorder: defaultInputBorder,
           ),

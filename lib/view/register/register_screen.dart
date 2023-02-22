@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vita_client_app/view/login/widgets/email_form_field.dart';
 import 'package:vita_client_app/view/login/widgets/register_button.dart';
+import 'package:vita_client_app/view/register/widgets/first_name_form_field.dart';
+import 'package:vita_client_app/view/register/widgets/last_name_form_field.dart';
+import 'package:vita_client_app/view/register/widgets/nickname_form_field.dart';
 import 'package:vita_client_app/view/widgets/image_logo.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
@@ -27,6 +30,12 @@ class _RegisterScreen extends State<RegisterScreen> {
                 children: [
                   const ImageLogo(),
                   const EmailFormField(),
+                  const SpaceVertical(),
+                  const FirstNameFormField(),
+                  const SpaceVertical(),
+                  const LastNameFormField(),
+                  const SpaceVertical(),
+                  const NickNameFormField(),
                   const SpaceVertical(size: 16),
                   RegisterButton(onPressed: () {})
                 ],
