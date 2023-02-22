@@ -7,6 +7,7 @@ import 'package:vita_client_app/util/constant/routes.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
 import 'package:vita_client_app/view/chat/chat_screen.dart';
 import 'package:vita_client_app/view/login/login_screen.dart';
+import 'package:vita_client_app/view/register/register_screen.dart';
 import 'package:vita_client_app/view/splash/bloc/splash_bloc.dart';
 import 'package:vita_client_app/view/splash/splash_screen.dart';
 
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
           routes: {
             Routes.splash: (_) => const SplashScreen(),
             Routes.chat: (_) => ChatScreen(),
-            Routes.login: (_) => LoginScreen()
+            Routes.login: (_) => const LoginScreen(),
+            Routes.register: (_) => const RegisterScreen()
           },
           initialRoute: Routes.splash,
           theme: ThemeData(
