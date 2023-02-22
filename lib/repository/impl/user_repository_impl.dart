@@ -38,4 +38,9 @@ class UserRepositoryImpl implements UserRepository {
   Future<Response<RegisterResponse>> register(RegisterRequest request) async {
     return _userService.register(request);
   }
+
+  @override
+  bool isLoggedIn() {
+    return _userDao.isLoggedIn();
+  }
 }

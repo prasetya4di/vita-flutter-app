@@ -6,4 +6,6 @@ abstract class UserDao {
   User read();
 
   String getToken();
+
+  bool isLoggedIn();
 }

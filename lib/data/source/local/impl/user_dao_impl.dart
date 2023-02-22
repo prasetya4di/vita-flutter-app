@@ -21,4 +21,9 @@ class UserDaoImpl implements UserDao {
   User read() {
     return _box.getAll().first;
   }
+
+  @override
+  bool isLoggedIn() {
+    return !_box.isEmpty();
+  }
 }

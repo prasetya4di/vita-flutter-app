@@ -12,6 +12,8 @@ abstract class UserRepository {
 
   String getToken();
 
+  bool isLoggedIn();
+
   Future<Response<LoginResponse>> login(LoginRequest request);
 
   Future<Response<RegisterResponse>> register(RegisterRequest request);
