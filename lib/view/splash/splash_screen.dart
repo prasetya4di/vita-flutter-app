@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
-        (_) => context.read<SplashBloc>().add(const GetMessageEvent()));
+        (_) => context.read<SplashBloc>().add(const CheckLoginEvent()));
 
     return BlocConsumer<SplashBloc, SplashState>(builder: (context, state) {
       return Scaffold(
@@ -39,7 +39,13 @@ class SplashScreen extends StatelessWidget {
         ),
       );
     }, listener: (context, state) {
-      if (state is SplashLoadedState) {
+      if (state is SplashCheckLoginState) {
+        if (state.isLoggedIn) {
+          context.read<SplashBloc>().add(const GetMessageEvent());
+        } else {
+          Navigator.pushReplacementNamed(context, Routes.login);
+        }
+      } else if (state is SplashLoadedState) {
         Navigator.pushReplacementNamed(context, Routes.chat);
       }
     });
