@@ -4,13 +4,15 @@ import 'package:vita_client_app/util/constant/font.dart';
 
 class RegisterButton extends StatelessWidget {
   final void Function() onPressed;
+  final bool enabled;
 
-  const RegisterButton({super.key, required this.onPressed});
+  const RegisterButton(
+      {super.key, required this.onPressed, this.enabled = true});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: enabled ? onPressed : null,
       style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(45),
           padding: const EdgeInsets.all(12)),

@@ -34,7 +34,7 @@ class _BirthdateFormField extends State<BirthdateFormField> {
       },
       child: UserFormField(
         controller: _birthdateController,
-        enabled: false,
+        readOnly: true,
         label: AppLocalizations.of(context).textBirthday,
         validator: _validateBirthdate,
         suffix: IconButton(

@@ -45,7 +45,7 @@ class _EmailFormField extends State<EmailFormField> {
         r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
     final regex = RegExp(pattern);
 
-    return value!.isNotEmpty && !regex.hasMatch(value)
+    return value!.isEmpty && !regex.hasMatch(value)
         ? AppLocalizations.of(context).textEmptyEmail
         : null;
   }
