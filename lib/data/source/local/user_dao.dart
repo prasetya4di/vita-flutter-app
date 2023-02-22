@@ -8,4 +8,6 @@ abstract class UserDao {
   String getToken();
 
   bool isLoggedIn();
+
+  clear();
 }

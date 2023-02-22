@@ -1,4 +1,4 @@
-import 'package:chopper/src/response.dart';
+import 'package:chopper/chopper.dart';
 import 'package:vita_client_app/data/model/entity/user.dart';
 import 'package:vita_client_app/data/model/request/login_request.dart';
 import 'package:vita_client_app/data/model/request/register_request.dart';
@@ -42,5 +42,10 @@ class UserRepositoryImpl implements UserRepository {
   @override
   bool isLoggedIn() {
     return _userDao.isLoggedIn();
+  }
+
+  @override
+  clear() {
+    _userDao.clear();
   }
 }

@@ -26,4 +26,9 @@ class UserDaoImpl implements UserDao {
   bool isLoggedIn() {
     return !_box.isEmpty();
   }
+
+  @override
+  clear() {
+    _box.removeAll();
+  }
 }

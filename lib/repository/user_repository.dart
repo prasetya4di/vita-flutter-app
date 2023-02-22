@@ -14,6 +14,8 @@ abstract class UserRepository {
 
   bool isLoggedIn();
 
+  clear();
+
   Future<Response<LoginResponse>> login(LoginRequest request);
 
   Future<Response<RegisterResponse>> register(RegisterRequest request);
