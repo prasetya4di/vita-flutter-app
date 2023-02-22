@@ -34,7 +34,7 @@ class _BirthdateFormField extends State<BirthdateFormField> {
       child: UserFormField(
         controller: _birthdateController,
         enabled: false,
-        label: "Birth Date",
+        label: "Birthday",
         validator: _validateBirthdate,
         suffix: IconButton(
             padding: const EdgeInsets.all(0),
