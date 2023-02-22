@@ -47,7 +47,7 @@ class _PasswordFormField extends State<PasswordFormField> {
     } else if (value!.length < 8) {
       return "Please enter at least 8 characters";
     } else if (!regex.hasMatch(value)) {
-      return "Password should contain at least one uppercase, lowercase, number, and a special character.";
+      return "Password should contain at least one uppercase, \nlowercase, number, and a special character.";
     } else {
       return null;
     }
