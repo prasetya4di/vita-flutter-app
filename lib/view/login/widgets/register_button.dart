@@ -14,7 +14,7 @@ class RegisterButton extends StatelessWidget {
           minimumSize: const Size.fromHeight(45),
           padding: const EdgeInsets.all(12)),
       child: const Text(
-        "Register",
+        "Sign Up",
         style: TextStyle(
             color: Colors.white,
             fontSize: 16,

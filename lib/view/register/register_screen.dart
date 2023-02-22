@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:vita_client_app/view/login/widgets/email_form_field.dart';
+import 'package:vita_client_app/view/login/widgets/register_button.dart';
 import 'package:vita_client_app/view/widgets/image_logo.dart';
+import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -23,6 +26,9 @@ class _RegisterScreen extends State<RegisterScreen> {
               child: Column(
                 children: [
                   const ImageLogo(),
+                  const EmailFormField(),
+                  const SpaceVertical(size: 16),
+                  RegisterButton(onPressed: () {})
                 ],
               ),
             ),

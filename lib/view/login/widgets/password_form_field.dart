@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vita_client_app/view/widgets/input_border.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
 class PasswordFormField extends StatefulWidget {
@@ -9,10 +10,6 @@ class PasswordFormField extends StatefulWidget {
 }
 
 class _PasswordFormField extends State<PasswordFormField> {
-  var inputBorder = const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-      borderSide: BorderSide(color: Colors.black));
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,10 +25,10 @@ class _PasswordFormField extends State<PasswordFormField> {
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 16, horizontal: 18),
             filled: true,
-            border: inputBorder,
-            enabledBorder: inputBorder,
+            border: defaultInputBorder,
+            enabledBorder: defaultInputBorder,
           ),
-          autovalidateMode: AutovalidateMode.always,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: _validatePassword,
         )
       ],
