@@ -17,7 +17,7 @@ class _BirthdateFormField extends State<BirthdateFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return UserFormField(
       onTap: () async {
         DateTime? pickedDate = await showDatePicker(
             context: context,
@@ -32,16 +32,14 @@ class _BirthdateFormField extends State<BirthdateFormField> {
           });
         }
       },
-      child: UserFormField(
-        controller: _birthdateController,
-        readOnly: true,
-        label: AppLocalizations.of(context).textBirthday,
-        validator: _validateBirthdate,
-        suffix: IconButton(
-            padding: const EdgeInsets.all(0),
-            onPressed: null,
-            icon: SvgPicture.asset(Assets.imagesIcCalendar)),
-      ),
+      controller: _birthdateController,
+      readOnly: true,
+      label: AppLocalizations.of(context).textBirthday,
+      validator: _validateBirthdate,
+      suffix: IconButton(
+          padding: const EdgeInsets.all(0),
+          onPressed: null,
+          icon: SvgPicture.asset(Assets.imagesIcCalendar)),
     );
   }
 

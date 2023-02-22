@@ -9,6 +9,7 @@ class UserFormField extends StatefulWidget {
   final bool enabled;
   final bool readOnly;
   final String? Function(String?) validator;
+  final void Function()? onTap;
   final TextInputType inputType;
   final Widget? suffix;
   final TextEditingController? controller;
@@ -22,7 +23,8 @@ class UserFormField extends StatefulWidget {
       this.suffix,
       this.obscureText = false,
       this.controller,
-      this.enabled = true});
+      this.enabled = true,
+      this.onTap});
 
   @override
   State<UserFormField> createState() => _UserFormField();
@@ -37,6 +39,7 @@ class _UserFormField extends State<UserFormField> {
         Text(widget.label, style: Theme.of(context).textTheme.labelMedium),
         const SpaceVertical(),
         TextFormField(
+          onTap: widget.onTap,
           controller: widget.controller,
           enabled: widget.enabled,
           readOnly: widget.readOnly,
