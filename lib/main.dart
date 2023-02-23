@@ -8,6 +8,7 @@ import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
 import 'package:vita_client_app/view/chat/chat_screen.dart';
 import 'package:vita_client_app/view/login/bloc/login_bloc.dart';
 import 'package:vita_client_app/view/login/login_screen.dart';
+import 'package:vita_client_app/view/register/bloc/register_bloc.dart';
 import 'package:vita_client_app/view/register/register_screen.dart';
 import 'package:vita_client_app/view/splash/bloc/splash_bloc.dart';
 import 'package:vita_client_app/view/splash/splash_screen.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (_) => SplashBloc()),
           BlocProvider(create: (_) => ChatBloc()),
-          BlocProvider(create: (_) => LoginBloc())
+          BlocProvider(create: (_) => LoginBloc()),
+          BlocProvider(create: (_) => RegisterBloc())
         ],
         child: MaterialApp(
           title: 'Vita',
