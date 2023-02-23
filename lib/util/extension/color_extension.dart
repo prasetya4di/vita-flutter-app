@@ -8,4 +8,6 @@ extension AssetColor on Colors {
   static const green100 = Color(0xFFDCF8C6);
   static const blue100 = Color(0xFF278EFF);
   static const blue200 = Color(0xFF007BFF);
+  static const ghostWhite = Color(0xFFF9F9F9);
+  static const textBlack = Color(0xFF2B2B2B);
 }
