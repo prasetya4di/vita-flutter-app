@@ -6,7 +6,9 @@ import 'package:vita_client_app/generated/assets.dart';
 import 'package:vita_client_app/view/widgets/user_form_field.dart';
 
 class BirthdateFormField extends StatefulWidget {
-  const BirthdateFormField({super.key});
+  final Function(String?)? onSave;
+
+  const BirthdateFormField({super.key, this.onSave});
 
   @override
   State<BirthdateFormField> createState() => _BirthdateFormField();
@@ -18,6 +20,7 @@ class _BirthdateFormField extends State<BirthdateFormField> {
   @override
   Widget build(BuildContext context) {
     return UserFormField(
+      onSave: widget.onSave,
       onTap: () async {
         DateTime? pickedDate = await showDatePicker(
             context: context,

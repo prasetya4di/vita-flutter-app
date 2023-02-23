@@ -4,7 +4,9 @@ import 'package:vita_client_app/view/widgets/space_vertical.dart';
 import 'package:vita_client_app/view/widgets/user_form_field.dart';
 
 class PasswordsFormField extends StatefulWidget {
-  const PasswordsFormField({super.key});
+  final Function(String?)? onSave;
+
+  const PasswordsFormField({super.key, this.onSave});
 
   @override
   State<PasswordsFormField> createState() => _PasswordsFormField();
@@ -20,6 +22,7 @@ class _PasswordsFormField extends State<PasswordsFormField> {
     return Column(
       children: [
         UserFormField(
+            onSave: widget.onSave,
             obscureText: true,
             label: AppLocalizations.of(context).textPassword,
             controller: _passwordController,

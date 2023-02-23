@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:vita_client_app/data/model/request/register_request.dart';
 import 'package:vita_client_app/view/login/widgets/email_form_field.dart';
 import 'package:vita_client_app/view/login/widgets/register_button.dart';
+import 'package:vita_client_app/view/register/bloc/register_bloc.dart';
+import 'package:vita_client_app/view/register/bloc/register_state.dart';
 import 'package:vita_client_app/view/register/widgets/birthdate_form_field.dart';
 import 'package:vita_client_app/view/register/widgets/first_name_form_field.dart';
 import 'package:vita_client_app/view/register/widgets/last_name_form_field.dart';
@@ -22,6 +26,13 @@ class _RegisterScreen extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isAgreeToPrivacyPolicy = false;
 
+  String _email = "";
+  String _password = "";
+  String _firstname = "";
+  String _lastname = "";
+  String _nickname = "";
+  String _birthday = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,17 +52,29 @@ class _RegisterScreen extends State<RegisterScreen> {
               child: Column(
                 children: [
                   const ImageLogo(),
-                  const EmailFormField(),
+                  EmailFormField(onSave: (value) {
+                    _email = value ?? "";
+                  }),
                   const SpaceVertical(),
-                  const FirstNameFormField(),
+                  FirstNameFormField(onSave: (value) {
+                    _firstname = value ?? "";
+                  }),
                   const SpaceVertical(),
-                  const LastNameFormField(),
+                  LastNameFormField(onSave: (value) {
+                    _lastname = value ?? "";
+                  }),
                   const SpaceVertical(),
-                  const NicknameFormField(),
+                  NicknameFormField(onSave: (value) {
+                    _nickname = value ?? "";
+                  }),
                   const SpaceVertical(),
-                  const BirthdateFormField(),
+                  BirthdateFormField(onSave: (value) {
+                    _birthday = value ?? "";
+                  }),
                   const SpaceVertical(),
-                  const PasswordsFormField(),
+                  PasswordsFormField(onSave: (value) {
+                    _password = value ?? "";
+                  }),
                   const SpaceVertical(),
                   PolicyAgreement(
                       isSelected: _isAgreeToPrivacyPolicy,
@@ -64,7 +87,17 @@ class _RegisterScreen extends State<RegisterScreen> {
                   RegisterButton(
                       enabled: _isAgreeToPrivacyPolicy,
                       onPressed: () {
-                        if (!(_formKey.currentState?.validate() ?? false)) {}
+                        if (_formKey.currentState?.validate() ?? false) {
+                          _formKey.currentState?.save();
+                          context.read<RegisterBloc>().add(PostRegisterEvent(
+                              RegisterRequest(
+                                  _email,
+                                  _password,
+                                  _firstname,
+                                  _lastname,
+                                  _nickname,
+                                  DateTime.parse(_birthday))));
+                        }
                       })
                 ],
               ),
