@@ -84,5 +84,6 @@
   "textPasswordMinimum": "Please enter at least 8 characters",
   "textPasswordMustContain": "Password must contain at least one uppercase, \nlowercase, number, and a special character.",
   "textEmptyRepeatPassword": "Please repeat your password.",
-  "textIncorrectRepeatPassword": "Password does not match."
+  "textIncorrectRepeatPassword": "Password does not match.",
+  "textLoading": "Loading ..."
 }

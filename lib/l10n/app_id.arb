@@ -36,5 +36,6 @@
   "textPasswordMinimum": "Password harus lebih dari 8 karakter",
   "textPasswordMustContain": "Password harus mengandung setidaknya satu huruf besar, \n angka, dan karakter spesial.",
   "textEmptyRepeatPassword": "Ulangi password anda.",
-  "textIncorrectRepeatPassword": "Password tidak sesuai."
+  "textIncorrectRepeatPassword": "Password tidak sesuai.",
+  "textLoading": "Loading ..."
 }
