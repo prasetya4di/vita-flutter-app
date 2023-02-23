@@ -4,7 +4,9 @@ import 'package:vita_client_app/view/widgets/input_border.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
 class EmailFormField extends StatefulWidget {
-  const EmailFormField({super.key});
+  final Function(String?)? onSave;
+
+  const EmailFormField({super.key, this.onSave});
 
   @override
   State<EmailFormField> createState() => _EmailFormField();
@@ -20,6 +22,7 @@ class _EmailFormField extends State<EmailFormField> {
             style: Theme.of(context).textTheme.labelMedium),
         const SpaceVertical(),
         TextFormField(
+          onSaved: widget.onSave,
           keyboardType: TextInputType.emailAddress,
           style: Theme.of(context).textTheme.bodyMedium,
           decoration: InputDecoration(

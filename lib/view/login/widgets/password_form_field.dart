@@ -4,7 +4,9 @@ import 'package:vita_client_app/view/widgets/input_border.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
 class PasswordFormField extends StatefulWidget {
-  const PasswordFormField({super.key});
+  final Function(String?)? onSave;
+
+  const PasswordFormField({super.key, this.onSave});
 
   @override
   State<PasswordFormField> createState() => _PasswordFormField();
@@ -20,6 +22,7 @@ class _PasswordFormField extends State<PasswordFormField> {
             style: Theme.of(context).textTheme.labelMedium),
         const SpaceVertical(),
         TextFormField(
+          onSaved: widget.onSave,
           keyboardType: TextInputType.visiblePassword,
           obscureText: true,
           style: Theme.of(context).textTheme.bodyMedium,
