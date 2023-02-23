@@ -45,31 +45,22 @@ class MyApp extends StatelessWidget {
           initialRoute: Routes.splash,
           theme: ThemeData(
               primarySwatch: Colors.blue,
+              fontFamily: poppins,
               textTheme: const TextTheme(
                 titleSmall: TextStyle(fontFamily: poppins, fontSize: 12),
-                titleMedium: TextStyle(
-                    fontFamily: poppins,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-                titleLarge: TextStyle(
-                    fontFamily: poppins,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700),
-                bodySmall: TextStyle(fontFamily: poppins, fontSize: 12),
-                bodyMedium: TextStyle(fontFamily: poppins, fontSize: 14),
-                bodyLarge: TextStyle(fontFamily: poppins, fontSize: 18),
-                labelSmall: TextStyle(
-                    fontFamily: poppins,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600),
-                labelMedium: TextStyle(
-                    fontFamily: poppins,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600),
-                labelLarge: TextStyle(
-                    fontFamily: poppins,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600),
+                titleMedium:
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                titleLarge:
+                    TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                bodySmall: TextStyle(fontSize: 12),
+                bodyMedium: TextStyle(fontSize: 14),
+                bodyLarge: TextStyle(fontSize: 18),
+                labelSmall:
+                    TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                labelMedium:
+                    TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                labelLarge:
+                    TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               )),
         ));
   }
