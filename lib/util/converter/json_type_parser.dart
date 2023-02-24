@@ -3,6 +3,7 @@ import 'package:vita_client_app/data/model/entity/message.dart';
 import 'package:vita_client_app/data/model/entity/user.dart';
 import 'package:vita_client_app/data/model/response/login_response.dart';
 import 'package:vita_client_app/data/model/response/register_response.dart';
+import 'package:vita_client_app/data/model/response/response_error.dart';
 import 'package:vita_client_app/data/model/response/scanned_image.dart';
 import 'package:vita_client_app/util/converter/parser_exception.dart';
 
@@ -15,7 +16,8 @@ class JsonTypeParser {
     ImagePossibility: ImagePossibility.fromJson,
     ScannedImage: ScannedImage.fromJson,
     LoginResponse: LoginResponse.fromJson,
-    RegisterResponse: RegisterResponse.fromJson
+    RegisterResponse: RegisterResponse.fromJson,
+    ResponseError: ResponseError.fromJson
   };
 
   static dynamic decode<T>(dynamic entity) {
