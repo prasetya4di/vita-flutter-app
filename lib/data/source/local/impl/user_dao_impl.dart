@@ -9,7 +9,11 @@ class UserDaoImpl implements UserDao {
 
   @override
   String getToken() {
-    return _box.getAll().first.token;
+    if (_box.getAll().isNotEmpty) {
+      return _box.getAll().first.token;
+    } else {
+      return "";
+    }
   }
 
   @override

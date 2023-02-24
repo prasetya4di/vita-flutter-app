@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vita_client_app/core/di.dart';
+import 'package:vita_client_app/domain/fetch_message.dart';
 import 'package:vita_client_app/domain/post_login.dart';
 import 'package:vita_client_app/view/login/bloc/login_state.dart';
 
@@ -8,9 +9,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<PostLoginEvent>((event, emit) async {
       emit(const LoginState.loading());
       var loginResult = await di<PostLogin>().call(event.request);
-      loginResult.fold((failure) {
+      await loginResult.fold((failure) {
         emit(LoginState.error(failure.message));
-      }, (data) => emit(const LoginState.success()));
+      }, (data) async {
+        await di<FetchMessage>()
+            .call()
+            .whenComplete(() => emit(const LoginState.success()));
+      });
     });
   }
 }
