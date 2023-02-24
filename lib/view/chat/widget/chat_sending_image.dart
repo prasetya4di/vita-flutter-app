@@ -28,7 +28,7 @@ class ChatSendingImage extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   margin: const EdgeInsets.only(left: 8),
                   decoration: BoxDecoration(
-                      color: AssetColor.green100.withOpacity(0.5),
+                      color: AssetColor.green50.withOpacity(0.5),
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
                       boxShadow: [
                         BoxShadow(
