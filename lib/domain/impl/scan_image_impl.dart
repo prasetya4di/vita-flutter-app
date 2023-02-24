@@ -1,5 +1,6 @@
 import 'package:either_dart/either.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vita_client_app/data/model/response/response_error.dart';
 import 'package:vita_client_app/data/model/response/scanned_image.dart';
 import 'package:vita_client_app/domain/scan_image.dart';
 import 'package:vita_client_app/repository/image_repository.dart';
@@ -12,7 +13,7 @@ class ScanImageImpl implements ScanImage {
   ScanImageImpl(this._repository, this._messageRepository);
 
   @override
-  Future<Either<Error, ScannedImage>> call(XFile image) async {
+  Future<Either<ResponseError, ScannedImage>> call(XFile image) async {
     var response = await _repository.scanImage(image);
     if (response.isSuccessful && response.body != null) {
       var result = response.body!;
@@ -21,7 +22,7 @@ class ScanImageImpl implements ScanImage {
       _repository.inserts(result.possibilities);
       return Right(result);
     } else {
-      return Left(response.error! as Error);
+      return Left(response.error as ResponseError);
     }
   }
 }
