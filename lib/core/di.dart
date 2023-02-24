@@ -1,3 +1,4 @@
+import 'package:chopper/chopper.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -52,6 +53,8 @@ import 'package:vita_client_app/repository/user_repository.dart';
 final di = GetIt.I;
 
 Future<void> setupDI() async {
+  di.allowReassignment = true;
+
   // util
   di.registerSingleton<InternetConnectionChecker>(
       InternetConnectionChecker.createInstance());
@@ -59,6 +62,7 @@ Future<void> setupDI() async {
   // dao
   final objectBox = await ObjectBox.create();
   final imagePicker = ImagePicker();
+  di.registerSingleton<ObjectBox>(objectBox);
   di.registerSingleton<Box<User>>(objectBox.store.box<User>());
   di.registerSingleton<Box<Message>>(objectBox.store.box<Message>());
   di.registerSingleton<Box<ImagePossibility>>(
@@ -68,10 +72,13 @@ Future<void> setupDI() async {
   di.registerSingleton<UserDao>(UserDaoImpl(di.get()));
 
   // service
+  di.registerSingleton<ChopperClient>(chopperClient());
   di.registerSingleton<MessageService>(
-      chopperClient.getService<MessageService>());
-  di.registerSingleton<ImageService>(chopperClient.getService<ImageService>());
-  di.registerSingleton<UserService>(chopperClient.getService<UserService>());
+      di.get<ChopperClient>().getService<MessageService>());
+  di.registerSingleton<ImageService>(
+      di.get<ChopperClient>().getService<ImageService>());
+  di.registerSingleton<UserService>(
+      di.get<ChopperClient>().getService<UserService>());
 
   // repository
   di.registerSingleton<MessageRepository>(
