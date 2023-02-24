@@ -54,7 +54,8 @@ class _RegisterScreen extends State<RegisterScreen> {
             if (state is RegisterLoadingState) {
               LoadingDialog.showLoading(context);
             } else if (state is RegisterSuccessState) {
-              Navigator.pushReplacementNamed(context, Routes.chat);
+              Navigator.pushNamedAndRemoveUntil(
+                  context, Routes.chat, (_) => true);
             }
           }, builder: (context, state) {
             return Padding(
