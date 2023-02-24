@@ -20,11 +20,10 @@ class ResponseConverter extends JsonConverter {
   }
 
   @override
-  FutureOr<Response> convertError<BodyType, InnerType>(
-      Response response) async {
-    final jsonRes = await super.convertError<BodyType, InnerType>(response);
+  FutureOr<Response> convertError<ResultType, Item>(Response response) async {
+    final jsonRes = await super.convertError(response);
     final dynamic body = jsonRes.body;
     final dynamic responseError = JsonTypeParser.decode<ResponseError>(body);
-    return jsonRes.copyWith<BodyType>(bodyError: responseError as BodyType);
+    return jsonRes.copyWith<ResponseError>(body: responseError);
   }
 }

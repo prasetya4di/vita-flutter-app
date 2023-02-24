@@ -9,6 +9,8 @@ import 'package:vita_client_app/view/login/widgets/email_form_field.dart';
 import 'package:vita_client_app/view/login/widgets/login_button.dart';
 import 'package:vita_client_app/view/login/widgets/password_form_field.dart';
 import 'package:vita_client_app/view/login/widgets/register_button.dart';
+import 'package:vita_client_app/view/widgets/alert.dart';
+import 'package:vita_client_app/view/widgets/dialog/loading_dialog.dart';
 import 'package:vita_client_app/view/widgets/image_logo.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
@@ -29,39 +31,53 @@ class _LoginScreen extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                const ImageLogo(),
-                const SpaceVertical(),
-                EmailFormField(onSave: (value) {
-                  _email = value ?? "";
-                }),
-                const SpaceVertical(size: 16),
-                PasswordFormField(onSave: (value) {
-                  _password = value ?? "";
-                }),
-                const SpaceVertical(size: 32),
-                LoginButton(onPressed: () {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    _formKey.currentState?.save();
-                    context
-                        .read<LoginBloc>()
-                        .add(PostLoginEvent(LoginRequest(_email, _password)));
-                  }
-                }),
-                const SpaceVertical(),
-                const ButtonSeparator(),
-                const SpaceVertical(),
-                RegisterButton(onPressed: () {
-                  Navigator.pushNamed(context, Routes.register);
-                })
-              ],
-            ),
-          ),
+        child: SingleChildScrollView(
+          child:
+              BlocConsumer<LoginBloc, LoginState>(listener: (context, state) {
+            LoadingDialog.hideLoading(context, Routes.login);
+            if (state is LoginLoadingState) {
+              LoadingDialog.showLoading(context);
+            } else if (state is LoginSuccessState) {
+              Navigator.pushReplacementNamed(context, Routes.chat);
+            }
+          }, builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    const ImageLogo(),
+                    const SpaceVertical(),
+                    EmailFormField(onSave: (value) {
+                      _email = value ?? "";
+                    }),
+                    const SpaceVertical(size: 16),
+                    PasswordFormField(onSave: (value) {
+                      _password = value ?? "";
+                    }),
+                    const SpaceVertical(size: 16),
+                    if (state is LoginErrorState)
+                      Alert.danger(text: state.message),
+                    const SpaceVertical(size: 16),
+                    LoginButton(onPressed: () {
+                      if (_formKey.currentState?.validate() ?? false) {
+                        _formKey.currentState?.save();
+                        context.read<LoginBloc>().add(
+                            PostLoginEvent(LoginRequest(_email, _password)));
+                      }
+                    }),
+                    const SpaceVertical(),
+                    const ButtonSeparator(),
+                    const SpaceVertical(),
+                    RegisterButton(onPressed: () {
+                      Navigator.pushNamed(context, Routes.register);
+                    })
+                  ],
+                ),
+              ),
+            );
+          }),
         ),
       ),
     );
