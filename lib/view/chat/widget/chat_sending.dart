@@ -27,13 +27,22 @@ class ChatSending extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               if (isError) SvgPicture.asset(Assets.imagesIcInfoError),
+              if (isError)
+                Container(
+                  margin: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    AppLocalizations.of(context).sendMessageFailed,
+                    style:
+                        const TextStyle(color: AssetColor.red100, fontSize: 8),
+                  ),
+                ),
               ChatTextTime(time: DateTime.now()),
             ],
           ),
           InkWell(
             onTap: () {
               if (isError) {
-                context.read<ChatBloc>().add(SendMessageEvent(message));
+                context.read<ChatBloc>().add(ResendMessageEvent(message));
               }
             },
             child: Flexible(
@@ -57,15 +66,6 @@ class ChatSending extends StatelessWidget {
                           fontFamily: poppins, color: Colors.black),
                     ),
                   ),
-                  if (isError)
-                    Container(
-                      margin: const EdgeInsets.only(left: 8),
-                      child: Text(
-                        AppLocalizations.of(context).sendMessageFailed,
-                        style: const TextStyle(
-                            color: AssetColor.red100, fontSize: 8),
-                      ),
-                    )
                 ],
               ),
             ),
