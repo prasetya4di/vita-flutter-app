@@ -34,8 +34,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       var message = request.SendMessage(Dummy.email, event.message);
       messages.insert(0, message);
       var sendMessageResult = await di<SendMessage>().call(message);
-      sendMessageResult
-          .fold((failure) => emit(ChatState.error(failure.toString())), (data) {
+      sendMessageResult.fold((failure) {
+        messages.first.isError = true;
+        emit(ChatState.error(failure.toString()));
+      }, (data) {
         messages.removeAt(0);
         messages.insertAll(0, data.reversed.toList());
         emit(const ChatState.messageSendedState());

@@ -6,6 +6,8 @@ part 'send_message.g.dart';
 class SendMessage {
   String email;
   String message;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool isError = false;
 
   SendMessage(this.email, this.message);
 

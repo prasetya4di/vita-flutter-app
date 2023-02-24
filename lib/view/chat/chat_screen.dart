@@ -63,7 +63,9 @@ class ChatScreen extends StatelessWidget {
                                   return ChatSend(message: data);
                                 }
                               } else if (data is SendMessage) {
-                                return ChatSending(message: data.message);
+                                return ChatSending(
+                                    message: data.message,
+                                    isError: data.isError);
                               } else if (data is XFile) {
                                 return ChatSendingImage(file: data);
                               } else if (data is List<ImagePossibility>) {
