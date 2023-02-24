@@ -7,8 +7,9 @@ import 'package:vita_client_app/view/widgets/user_form_field.dart';
 
 class BirthdateFormField extends StatefulWidget {
   final Function(String?)? onSave;
+  final Function(DateTime) onchange;
 
-  const BirthdateFormField({super.key, this.onSave});
+  const BirthdateFormField({super.key, this.onSave, required this.onchange});
 
   @override
   State<BirthdateFormField> createState() => _BirthdateFormField();
@@ -28,6 +29,7 @@ class _BirthdateFormField extends State<BirthdateFormField> {
             firstDate: DateTime(1950),
             lastDate: DateTime.now());
         if (pickedDate != null) {
+          widget.onchange(pickedDate);
           String formattedDate = DateFormat('dd MMM yyyy').format(pickedDate);
 
           setState(() {
