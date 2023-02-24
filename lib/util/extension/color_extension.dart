@@ -18,7 +18,8 @@ extension AssetColor on Colors {
   static const green200 = Color(0xFF146c43);
 
   // red
-  static const red50 = Color(0xFFf1AEB5);
+  static const red50 = Color(0xFFf8d7da);
+  static const red75 = Color(0xFFf1AEB5);
   static const red100 = Color(0xFFDC3545);
   static const red200 = Color(0xFFB02A37);
 
