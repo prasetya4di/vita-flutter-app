@@ -9,7 +9,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       emit(const RegisterState.loading());
       var registerResult = await di<PostRegister>().call(event.request);
       registerResult.fold(
-          (failure) => emit(RegisterState.error(failure.body["message"])),
+          (failure) => emit(RegisterState.error(failure.message)),
           (data) => emit(const RegisterState.success()));
     });
   }
