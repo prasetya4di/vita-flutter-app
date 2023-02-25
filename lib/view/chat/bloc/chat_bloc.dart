@@ -45,7 +45,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     });
 
     on<ResendMessageEvent>((event, emit) async {
-      messages.removeAt(0);
+      messages.removeWhere(
+          (e) => e is request.SendMessage && e.message == event.message);
       var message = request.SendMessage(event.message);
       messages.insert(0, message);
       emit(const ChatState.messageSendingState());
