@@ -6,6 +6,8 @@ part 'login_state.freezed.dart';
 @freezed
 abstract class LoginEvent with _$LoginEvent {
   const factory LoginEvent.onLogin(LoginRequest request) = PostLoginEvent;
+
+  const factory LoginEvent.onFetchMessage() = FetchMessageEvent;
 }
 
 @freezed
@@ -17,4 +19,13 @@ abstract class LoginState with _$LoginState {
   const factory LoginState.error(String message) = LoginErrorState;
 
   const factory LoginState.success() = LoginSuccessState;
+
+  const factory LoginState.fetchMessageLoading() =
+      LoginFetchMessageLoadingState;
+
+  const factory LoginState.fetchMessageSuccess() =
+      LoginFetchMessageSuccessState;
+
+  const factory LoginState.fetchMessageError(String message) =
+      LoginFetchMessageErrorState;
 }

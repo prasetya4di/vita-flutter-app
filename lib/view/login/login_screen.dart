@@ -37,7 +37,14 @@ class _LoginScreen extends State<LoginScreen> {
             LoadingDialog.hideLoading(context, Routes.login);
             if (state is LoginLoadingState) {
               LoadingDialog.showLoading(context);
+            } else if (state is LoginFetchMessageLoadingState) {
+              LoadingDialog.hideLoading(context, Routes.login);
+              LoadingDialog.showLoading(context, message: "Fetching messages");
             } else if (state is LoginSuccessState) {
+              context.read<LoginBloc>().add(const FetchMessageEvent());
+            } else if (state is LoginErrorState) {
+              LoadingDialog.hideLoading(context, Routes.login);
+            } else if (state is LoginFetchMessageSuccessState) {
               Navigator.pushReplacementNamed(context, Routes.chat);
             }
           }, builder: (context, state) {
