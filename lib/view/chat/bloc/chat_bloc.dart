@@ -4,6 +4,7 @@ import 'package:vita_client_app/data/model/request/reply_message.dart'
     as request2;
 import 'package:vita_client_app/data/model/request/send_message.dart'
     as request;
+import 'package:vita_client_app/data/model/request/upload_image.dart';
 import 'package:vita_client_app/domain/load_message.dart';
 import 'package:vita_client_app/domain/load_possibility.dart';
 import 'package:vita_client_app/domain/pick_image.dart';
@@ -67,11 +68,14 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       if (image == null) {
         emit(const ChatState.imageUploadCancelState());
       } else {
-        messages.insert(0, image);
+        var uploadImage = UploadImage(image);
+        messages.insert(0, uploadImage);
         emit(const ChatState.imageSelectedState());
         var uploadResult = await di<ScanImage>().call(image);
-        uploadResult.fold(
-            (failure) => emit(ChatState.error(failure.toString())), (data) {
+        uploadResult.fold((failure) {
+          messages.first.isError = true;
+          emit(ChatState.error(failure.toString()));
+        }, (data) {
           messages.removeAt(0);
           messages.insertAll(0, data.messages.reversed);
           if (data.possibilities.length > 1) {
@@ -80,6 +84,26 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
           emit(const ChatState.imageUploadedState());
         });
       }
+    });
+
+    on<RescanImageEvent>((event, emit) async {
+      messages.removeWhere(
+          (e) => e is UploadImage && e.image.path == event.image.path);
+      var uploadImage = UploadImage(event.image);
+      messages.insert(0, uploadImage);
+      var uploadResult = await di<ScanImage>().call(event.image);
+      emit(const ChatState.imageUploadState());
+      uploadResult.fold((failure) {
+        messages.first.isError = true;
+        emit(ChatState.error(failure.toString()));
+      }, (data) {
+        messages.removeAt(0);
+        messages.insertAll(0, data.messages.reversed);
+        if (data.possibilities.length > 1) {
+          messages.insert(0, data.possibilities);
+        }
+        emit(const ChatState.imageUploadedState());
+      });
     });
 
     on<ReplyMessageEvent>((event, emit) async {

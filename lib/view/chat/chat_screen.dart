@@ -6,6 +6,7 @@ import 'package:vita_client_app/data/model/entity/image_possibility.dart';
 import 'package:vita_client_app/data/model/entity/message.dart';
 import 'package:vita_client_app/data/model/request/reply_message.dart';
 import 'package:vita_client_app/data/model/request/send_message.dart';
+import 'package:vita_client_app/data/model/request/upload_image.dart';
 import 'package:vita_client_app/generated/assets.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
@@ -68,6 +69,9 @@ class ChatScreen extends StatelessWidget {
                                     isError: data.isError);
                               } else if (data is XFile) {
                                 return ChatSendingImage(file: data);
+                              } else if (data is UploadImage) {
+                                return ChatSendingImage(
+                                    file: data.image, isError: data.isError);
                               } else if (data is List<ImagePossibility>) {
                                 return ChatPossibilities(
                                     possibilities: data,

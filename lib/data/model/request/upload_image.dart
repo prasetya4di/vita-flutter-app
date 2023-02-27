@@ -1,17 +1,8 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 
-part 'upload_image.g.dart';
-
-@JsonSerializable()
 class UploadImage {
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  String? image;
-  String email;
+  XFile image;
+  bool isError = false;
 
-  UploadImage(this.email);
-
-  factory UploadImage.fromJson(Map<String, dynamic> json) =>
-      _$UploadImageFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UploadImageToJson(this);
+  UploadImage(this.image);
 }
