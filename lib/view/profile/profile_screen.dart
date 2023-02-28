@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
+import 'package:vita_client_app/util/constant/routes.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 import 'package:vita_client_app/view/profile/bloc/profile_bloc.dart';
 import 'package:vita_client_app/view/profile/bloc/profile_state.dart';
+import 'package:vita_client_app/view/profile/widgets/logout_button.dart';
 import 'package:vita_client_app/view/profile/widgets/profile_info.dart';
+import 'package:vita_client_app/view/widgets/space_vertical.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -21,7 +24,12 @@ class ProfileScreen extends StatelessWidget {
         shadowColor: Colors.black.withOpacity(0.2),
         iconTheme: const IconThemeData(color: Colors.black),
       ),
-      body: BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
+      body: BlocConsumer<ProfileBloc, ProfileState>(listener: (context, state) {
+        if (state is ProfileLogoutState) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, Routes.login, (route) => true);
+        }
+      }, builder: (context, state) {
         return SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -44,6 +52,8 @@ class ProfileScreen extends StatelessWidget {
                     label: AppLocalizations.of(context).textBirthday,
                     text: DateFormat("dd MMMM yyyy")
                         .format(bloc.user?.birthDate ?? DateTime.now())),
+                const SpaceVertical(size: 18),
+                const LogoutButton()
               ],
             ),
           ),
