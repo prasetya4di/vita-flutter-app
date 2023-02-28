@@ -29,6 +29,7 @@ import 'package:vita_client_app/domain/impl/get_token_impl.dart';
 import 'package:vita_client_app/domain/impl/get_user_impl.dart';
 import 'package:vita_client_app/domain/impl/load_message_impl.dart';
 import 'package:vita_client_app/domain/impl/load_possibility_impl.dart';
+import 'package:vita_client_app/domain/impl/logout_impl.dart';
 import 'package:vita_client_app/domain/impl/pick_image_impl.dart';
 import 'package:vita_client_app/domain/impl/post_login_impl.dart';
 import 'package:vita_client_app/domain/impl/post_register_impl.dart';
@@ -37,6 +38,7 @@ import 'package:vita_client_app/domain/impl/scan_image_impl.dart';
 import 'package:vita_client_app/domain/impl/send_message_impl.dart';
 import 'package:vita_client_app/domain/load_message.dart';
 import 'package:vita_client_app/domain/load_possibility.dart';
+import 'package:vita_client_app/domain/logout.dart';
 import 'package:vita_client_app/domain/pick_image.dart';
 import 'package:vita_client_app/domain/post_login.dart';
 import 'package:vita_client_app/domain/post_register.dart';
@@ -101,4 +103,5 @@ Future<void> setupDI() async {
   di.registerSingleton<PostRegister>(PostRegisterImpl(di.get(), di.get()));
   di.registerSingleton<GetToken>(GetTokenImpl(di.get()));
   di.registerSingleton<CheckConnection>(CheckConnectionImpl(di.get()));
+  di.registerSingleton<Logout>(LogoutImpl(di.get(), di.get(), di.get()));
 }
