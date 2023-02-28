@@ -45,7 +45,7 @@ class SplashScreen extends StatelessWidget {
         } else {
           Navigator.pushReplacementNamed(context, Routes.login);
         }
-      } else if (state is SplashLoadedState) {
+      } else if (state is SplashLoadedState || state is SplashErrorState) {
         Navigator.pushReplacementNamed(context, Routes.chat);
       }
     });
