@@ -11,16 +11,20 @@ class ProfileInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label, style: Theme.of(context).textTheme.labelMedium),
-        Container(
-          padding: const EdgeInsets.all(8),
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              color: AssetColor.gray100),
-          child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
+        FractionallySizedBox(
+          widthFactor: 1,
+          child: Container(
+            padding: const EdgeInsets.all(12),
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                color: AssetColor.gray100),
+            child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
+          ),
         ),
-        const SpaceVertical()
+        const SpaceVertical(size: 16)
       ],
     );
   }

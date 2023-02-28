@@ -8,6 +8,7 @@ import 'package:vita_client_app/data/model/request/reply_message.dart';
 import 'package:vita_client_app/data/model/request/send_message.dart';
 import 'package:vita_client_app/data/model/request/upload_image.dart';
 import 'package:vita_client_app/generated/assets.dart';
+import 'package:vita_client_app/util/constant/routes.dart';
 import 'package:vita_client_app/util/extension/color_extension.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_bloc.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_state.dart';
@@ -35,7 +36,7 @@ class ChatScreen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  //Todo add function navigate to profile
+                  Navigator.of(context).pushNamed(Routes.profile);
                 },
                 icon: SvgPicture.asset(Assets.imagesIcUser))
           ],
