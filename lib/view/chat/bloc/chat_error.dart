@@ -1,0 +1,1 @@
+class ImageNotSelected extends Error {}

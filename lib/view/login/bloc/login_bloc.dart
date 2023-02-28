@@ -30,7 +30,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     on<FetchMessageEvent>((event, emit) async {
       emit(const LoginState.fetchMessageLoading());
-      Task(() => di<FetchMessage>().call())
+      await Task(() => di<FetchMessage>().call())
           .attempt()
           .mapLeftToFailure()
           .run()
