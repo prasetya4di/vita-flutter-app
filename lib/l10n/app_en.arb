@@ -85,5 +85,10 @@
   "textPasswordMustContain": "Password must contain at least one uppercase, \nlowercase, number, and a special character.",
   "textEmptyRepeatPassword": "Please repeat your password.",
   "textIncorrectRepeatPassword": "Password does not match.",
-  "textLoading": "Loading ..."
+  "textLoading": "Loading ...",
+  "textLogout": "Logout",
+  "textLogoutConfirmation": "Are you sure you want to logout from this account ?",
+  "textYes": "Yes",
+  "textNo": "No",
+  "textConfirmation": "Confirmation"
 }

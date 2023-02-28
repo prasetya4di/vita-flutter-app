@@ -37,5 +37,10 @@
   "textPasswordMustContain": "Password harus mengandung setidaknya satu huruf besar, \n angka, dan karakter spesial.",
   "textEmptyRepeatPassword": "Ulangi password anda.",
   "textIncorrectRepeatPassword": "Password tidak sesuai.",
-  "textLoading": "Loading ..."
+  "textLoading": "Loading ...",
+  "textLogout": "Keluar",
+  "textLogoutConfirmation": "Apakah anda yakin akan keluar dari akun ini ?",
+  "textYes": "Ya",
+  "textNo": "Tidak",
+  "textConfirmation": "Konfirmasi"
 }
