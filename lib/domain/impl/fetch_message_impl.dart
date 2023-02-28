@@ -16,7 +16,7 @@ class FetchMessageImpl implements FetchMessage {
     var response = await _repository.getMessage();
     if (response.isSuccessful && response.body != null) {
       var messages = response.body!;
-      await _repository.deleteMessage();
+      _repository.clear();
       _repository.inserts(messages);
       return Right(messages);
     } else {

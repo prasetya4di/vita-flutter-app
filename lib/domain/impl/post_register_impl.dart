@@ -16,7 +16,7 @@ class PostRegisterImpl implements PostRegister {
     var response = await _userRepository.register(request);
     RegisterResponse data = response.body!;
     await _userRepository.clear();
-    await _messageRepository.deleteMessage();
+    _messageRepository.clear();
     _userRepository.insert(data.user);
     _messageRepository.inserts([data.message]);
     return data.user;
