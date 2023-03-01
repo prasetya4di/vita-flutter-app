@@ -51,14 +51,14 @@ void main() {
     expect(pickedFile?.path, null);
   });
 
-  test("Insert success", () async {
+  test("Insert success", () {
     var expectedPossibilities = [
       createImagePossiblity(),
       createImagePossiblity(),
       createImagePossiblity()
     ];
     imageDao.inserts(expectedPossibilities);
-    List<ImagePossibility> possibilities = await imageDao.get();
+    List<ImagePossibility> possibilities = possibilityBox.getAll();
     expect(possibilities, expectedPossibilities);
   });
 
@@ -68,7 +68,7 @@ void main() {
       createImagePossiblity(),
       createImagePossiblity()
     ];
-    imageDao.inserts(expectedPossibilities);
+    possibilityBox.putMany(expectedPossibilities);
     List<ImagePossibility> possibilities = await imageDao.get();
     expect(possibilities, expectedPossibilities);
   });
@@ -78,17 +78,17 @@ void main() {
     expect(possibilities, []);
   });
 
-  test("Delete success", () async {
+  test("Delete success", () {
     var expectedPossibilities = [
       createImagePossiblity(),
       createImagePossiblity(),
       createImagePossiblity()
     ];
-    imageDao.inserts(expectedPossibilities);
-    List<ImagePossibility> possibilities = await imageDao.get();
+    possibilityBox.putMany(expectedPossibilities);
+    List<ImagePossibility> possibilities = possibilityBox.getAll();
     expect(possibilities, expectedPossibilities);
     imageDao.delete();
-    possibilities = await imageDao.get();
+    possibilities = possibilityBox.getAll();
     expect(possibilities, []);
   });
 }

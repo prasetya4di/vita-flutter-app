@@ -26,14 +26,14 @@ void main() {
   test("Insert messages sucess", () async {
     List<Message> expectedMessages = createListMessage();
     messageDao.inserts(expectedMessages);
-    List<Message> messages = await messageDao.get();
+    List<Message> messages = messageBox.getAll();
     expect(messages.length, expectedMessages.length);
-    expect(messages, expectedMessages.reversed);
+    expect(messages, expectedMessages);
   });
 
   test("Get messages success", () async {
     List<Message> expectedMessages = createListMessage();
-    messageDao.inserts(expectedMessages);
+    messageBox.putMany(expectedMessages);
     List<Message> messages = await messageDao.get();
     expect(messages.length, expectedMessages.length);
     expect(messages, expectedMessages.reversed);
@@ -47,12 +47,12 @@ void main() {
 
   test("Delete messages success", () async {
     List<Message> expectedMessages = createListMessage();
-    messageDao.inserts(expectedMessages);
-    List<Message> messages = await messageDao.get();
+    messageBox.putMany(expectedMessages);
+    List<Message> messages = messageBox.getAll();
     expect(messages.length, expectedMessages.length);
-    expect(messages, expectedMessages.reversed);
+    expect(messages, expectedMessages);
     messageDao.delete();
-    messages = await messageDao.get();
+    messages = messageBox.getAll();
     expect(messages.length, 0);
     expect(messages, []);
   });

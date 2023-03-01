@@ -27,20 +27,20 @@ void main() {
   test("Insert user success", () {
     User expectedUser = createUser();
     userDao.insert(expectedUser);
-    var user = userDao.read();
+    var user = userBox.getAll().first;
     expect(user, expectedUser);
   });
 
   test("Read user success", () {
     User expectedUser = createUser();
-    userDao.insert(expectedUser);
+    userBox.put(expectedUser);
     var user = userDao.read();
     expect(user, expectedUser);
   });
 
   test("Get token success", () {
     User expectedUser = createUser();
-    userDao.insert(expectedUser);
+    userBox.put(expectedUser);
     var user = userDao.getToken();
     expect(user, expectedUser.token);
   });
@@ -53,14 +53,14 @@ void main() {
 
   test("Check user logged in true", () {
     User expectedUser = createUser();
-    userDao.insert(expectedUser);
+    userBox.put(expectedUser);
     var isLoggedIn = userDao.isLoggedIn();
     expect(isLoggedIn, true);
   });
 
   test("Check user logged in true", () {
     User expectedUser = createUser();
-    userDao.insert(expectedUser);
+    userBox.put(expectedUser);
     var isLoggedIn = userDao.isLoggedIn();
     expect(isLoggedIn, true);
   });
@@ -72,11 +72,11 @@ void main() {
 
   test("Clear all user success", () {
     User expectedUser = createUser();
-    userDao.insert(expectedUser);
-    var isLoggedIn = userDao.isLoggedIn();
+    userBox.put(expectedUser);
+    var isLoggedIn = userBox.getAll().isNotEmpty;
     expect(isLoggedIn, true);
     userDao.clear();
-    isLoggedIn = userDao.isLoggedIn();
+    isLoggedIn = userBox.getAll().isNotEmpty;
     expect(isLoggedIn, false);
   });
 }
