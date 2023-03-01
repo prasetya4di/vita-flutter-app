@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:objectbox/objectbox.dart';
 
@@ -5,7 +6,7 @@ part 'message.g.dart';
 
 @JsonSerializable()
 @Entity()
-class Message {
+class Message extends Equatable {
   @Id()
   @JsonKey(includeToJson: false, includeFromJson: false)
   int obxId = 0;
@@ -30,4 +31,8 @@ class Message {
       _$MessageFromJson(json);
 
   Map<String, dynamic> toJson() => _$MessageToJson(this);
+
+  @override
+  List<Object?> get props =>
+      [id, email, message, createdDate, messageType, fileType];
 }
