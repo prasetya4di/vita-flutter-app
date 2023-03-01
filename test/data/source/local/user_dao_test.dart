@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:objectbox/objectbox.dart';
-import 'package:random_string/random_string.dart';
 import 'package:vita_client_app/data/model/entity/user.dart';
 import 'package:vita_client_app/data/source/local/impl/user_dao_impl.dart';
 import 'package:vita_client_app/data/source/local/user_dao.dart';
 import 'package:vita_client_app/objectbox.g.dart';
 
+import '../../../util/dummy_builder.dart';
 import 'objectbox_test.dart';
 
 void main() {
@@ -23,14 +23,6 @@ void main() {
     userBox.removeAll();
     await objectBoxTest.delete();
   });
-
-  User createUser() => User(
-      randomString(5),
-      randomString(5),
-      randomString(5),
-      randomString(5),
-      DateTime(2000, randomBetween(1, 12), randomBetween(1, 30)),
-      randomString(5));
 
   test("Insert user success", () {
     User expectedUser = createUser();

@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:objectbox/objectbox.dart';
-import 'package:random_string/random_string.dart';
 import 'package:vita_client_app/data/model/entity/message.dart';
 import 'package:vita_client_app/data/source/local/impl/message_dao_impl.dart';
 import 'package:vita_client_app/data/source/local/message_dao.dart';
 
+import '../../../util/dummy_builder.dart';
 import 'objectbox_test.dart';
 
 void main() {
@@ -22,17 +22,6 @@ void main() {
     messageBox.removeAll();
     await objectBoxTest.delete();
   });
-
-  Message createMessage() => Message(
-      randomBetween(0, 100),
-      randomString(5),
-      randomString(5),
-      DateTime(2000, randomBetween(1, 12), randomBetween(1, 30)),
-      randomString(5),
-      randomString(5));
-
-  List<Message> createListMessage() =>
-      [createMessage(), createMessage(), createMessage()];
 
   test("Insert messages sucess", () async {
     List<Message> expectedMessages = createListMessage();

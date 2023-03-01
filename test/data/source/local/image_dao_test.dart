@@ -8,6 +8,7 @@ import 'package:vita_client_app/data/model/entity/image_possibility.dart';
 import 'package:vita_client_app/data/source/local/image_dao.dart';
 import 'package:vita_client_app/data/source/local/impl/image_dao_impl.dart';
 
+import '../../../util/dummy_builder.dart';
 import 'image_dao_test.mocks.dart';
 import 'objectbox_test.dart';
 
@@ -29,9 +30,6 @@ void main() {
     imageDao.delete();
     await objectBoxTest.delete();
   });
-
-  ImagePossibility createImagePossiblity() =>
-      ImagePossibility(randomString(5), randomString(5));
 
   test("Pick image success", () async {
     XFile expectedFile = XFile(randomString(5), name: randomString(5));
