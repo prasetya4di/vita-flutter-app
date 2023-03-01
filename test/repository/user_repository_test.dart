@@ -19,7 +19,7 @@ import 'package:vita_client_app/repository/impl/user_repository_impl.dart';
 import 'package:vita_client_app/repository/user_repository.dart';
 
 import '../util/dummy_builder.dart';
-import 'user_repository.mocks.dart';
+import 'user_repository_test.mocks.dart';
 
 @GenerateMocks([UserService, UserDao])
 void main() {
