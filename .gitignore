@@ -47,3 +47,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 .env*
+/test/data/source/local/possibility_dao_test.mocks.dart
