@@ -35,6 +35,7 @@ pubspec.lock
 *.g.dart
 *.chopper.dart
 *.freezed.dart
+*.mocks.dart
 
 # Symbolication related
 app.*.symbols
@@ -47,4 +48,3 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 .env*
-/test/data/source/local/possibility_dao_test.mocks.dart
