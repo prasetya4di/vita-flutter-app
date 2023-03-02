@@ -38,7 +38,7 @@ class MessageRepositoryImpl extends MessageRepository {
   }
 
   @override
-  void clear() async {
+  clear() async {
     _messageDao.delete();
   }
 }

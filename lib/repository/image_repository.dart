@@ -12,5 +12,5 @@ abstract class ImageRepository {
 
   Future<List<ImagePossibility>> read();
 
-  Future<void> clear();
+  clear();
 }

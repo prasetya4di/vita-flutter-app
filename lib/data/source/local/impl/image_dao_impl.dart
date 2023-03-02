@@ -20,7 +20,7 @@ class ImageDaoImpl implements ImageDao {
   }
 
   @override
-  Future<void> delete() async {
+  delete() {
     _box.removeAll();
   }
 

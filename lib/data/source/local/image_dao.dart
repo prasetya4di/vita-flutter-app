@@ -8,5 +8,5 @@ abstract class ImageDao {
 
   Future<List<ImagePossibility>> get();
 
-  Future<void> delete();
+  delete();
 }

@@ -23,7 +23,7 @@ class ImageRepositoryImpl implements ImageRepository {
   }
 
   @override
-  Future<void> clear() async {
+  clear() async {
     dao.delete();
   }
 

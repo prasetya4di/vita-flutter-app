@@ -8,7 +8,7 @@ abstract class MessageRepository {
 
   Future<List<Message>> read();
 
-  void clear();
+  clear();
 
   Future<Response<List<Message>>> getMessage();
 
