@@ -3,7 +3,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:objectbox/objectbox.dart';
-import 'package:random_string/random_string.dart';
 import 'package:vita_client_app/data/model/entity/image_possibility.dart';
 import 'package:vita_client_app/data/source/local/image_dao.dart';
 import 'package:vita_client_app/data/source/local/impl/image_dao_impl.dart';
@@ -32,8 +31,8 @@ void main() {
   });
 
   test("Pick image success", () async {
-    XFile expectedFile = XFile(randomString(5), name: randomString(5));
-    ImageSource expectedImageSource = ImageSource.values[randomBetween(0, 1)];
+    XFile expectedFile = createXFile();
+    ImageSource expectedImageSource = createImageSource();
     when(mockImagePicker.pickImage(
             source: expectedImageSource, maxWidth: 1800, maxHeight: 1800))
         .thenAnswer((_) => Future.value(expectedFile));
@@ -43,7 +42,7 @@ void main() {
   });
 
   test("Pick image canceled should return null", () async {
-    ImageSource expectedImageSource = ImageSource.values[randomBetween(0, 1)];
+    ImageSource expectedImageSource = createImageSource();
     when(mockImagePicker.pickImage(
             source: expectedImageSource, maxWidth: 1800, maxHeight: 1800))
         .thenAnswer((_) => Future.value(null));
