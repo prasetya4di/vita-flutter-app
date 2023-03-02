@@ -51,6 +51,36 @@ void main() {
     );
   });
 
+  test("Read user success", () {
+    var expectedUser = createUser();
+    when(mockUserDao.read()).thenReturn(expectedUser);
+    var user = userRepository.read();
+    expect(user, expectedUser);
+  });
+
+  test("Read user error should throw error", () {
+    var expectedError = ObjectBoxException("Data not found");
+    when(mockUserDao.read()).thenThrow(expectedError);
+    verifyNever(mockUserDao.read());
+    expect(
+      () => userRepository.read(),
+      throwsA(const TypeMatcher<ObjectBoxException>()),
+    );
+  });
+
+  test("Is logged in should return boolean when success", () {
+    var expectedLoggedIn = randomBetween(0, 1) == 1;
+    when(mockUserDao.isLoggedIn()).thenReturn(expectedLoggedIn);
+    var user = userRepository.isLoggedIn();
+    expect(user, expectedLoggedIn);
+  });
+
+  test("Clear should delete all data in object box", () {
+    when(mockUserDao.clear()).thenReturn(() {});
+    userRepository.clear();
+    verify(mockUserDao.clear());
+  });
+
   test("Get token success", () {
     var expectedToken = createUser().token;
     when(mockUserDao.getToken()).thenReturn(expectedToken);
