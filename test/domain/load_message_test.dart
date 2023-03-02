@@ -8,7 +8,7 @@ import 'package:vita_client_app/domain/load_message.dart';
 import 'package:vita_client_app/repository/message_repository.dart';
 
 import '../util/dummy_builder.dart';
-import 'fetch_message_test.mocks.dart';
+import 'load_message_test.mocks.dart';
 
 @GenerateMocks([MessageRepository])
 void main() {

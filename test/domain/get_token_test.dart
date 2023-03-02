@@ -7,7 +7,7 @@ import 'package:vita_client_app/domain/impl/get_token_impl.dart';
 import 'package:vita_client_app/repository/user_repository.dart';
 
 import '../util/dummy_builder.dart';
-import 'check_login_test.mocks.dart';
+import 'get_token_test.mocks.dart';
 
 @GenerateMocks([UserRepository])
 void main() {

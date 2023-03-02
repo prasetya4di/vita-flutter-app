@@ -5,7 +5,7 @@ import 'package:vita_client_app/data/source/local/impl/message_dao_impl.dart';
 import 'package:vita_client_app/data/source/local/message_dao.dart';
 
 import '../../../util/dummy_builder.dart';
-import 'objectbox_test.dart';
+import 'objectbox.dart';
 
 void main() {
   late ObjectBoxTest objectBoxTest;
