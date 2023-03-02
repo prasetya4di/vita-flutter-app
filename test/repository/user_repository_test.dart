@@ -119,7 +119,7 @@ void main() {
 
   test("Login failed should return response error", () async {
     LoginRequest request = createLoginRequest();
-    ResponseError expectedResponseError = ResponseError(randomString(5));
+    ResponseError expectedResponseError = createResponseError();
     var expectedResponse = Response<LoginResponse>(
         http.Response(jsonEncode(expectedResponseError.toJson()), 401), null,
         error: expectedResponseError);
@@ -156,7 +156,7 @@ void main() {
 
   test("Register failed should return response error", () async {
     RegisterRequest request = createRegisterRequest();
-    ResponseError expectedResponseError = ResponseError(randomString(5));
+    ResponseError expectedResponseError = createResponseError();
     var expectedResponse = Response<RegisterResponse>(
         http.Response(jsonEncode(expectedResponseError.toJson()), 401), null,
         error: expectedResponseError);

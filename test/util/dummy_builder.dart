@@ -7,6 +7,7 @@ import 'package:vita_client_app/data/model/request/login_request.dart';
 import 'package:vita_client_app/data/model/request/register_request.dart';
 import 'package:vita_client_app/data/model/request/reply_message.dart';
 import 'package:vita_client_app/data/model/request/send_message.dart';
+import 'package:vita_client_app/data/model/response/response_error.dart';
 import 'package:vita_client_app/data/model/response/scanned_image.dart';
 
 Message createMessage() => Message(
@@ -56,3 +57,5 @@ RegisterRequest createRegisterRequest() => RegisterRequest(
 XFile createXFile() => XFile(randomString(5), name: randomString(5));
 
 ImageSource createImageSource() => ImageSource.values[randomBetween(0, 1)];
+
+ResponseError createResponseError() => ResponseError(randomString(5));

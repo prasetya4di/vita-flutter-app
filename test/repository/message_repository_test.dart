@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:objectbox/objectbox.dart';
-import 'package:random_string/random_string.dart';
 import 'package:vita_client_app/data/model/entity/message.dart';
 import 'package:vita_client_app/data/model/request/reply_message.dart';
 import 'package:vita_client_app/data/model/request/send_message.dart';
@@ -81,7 +80,7 @@ void main() {
   });
 
   test("Get message failed should return response error", () async {
-    ResponseError expectedResponseError = ResponseError(randomString(5));
+    ResponseError expectedResponseError = createResponseError();
     var expectedResponse = Response<List<Message>>(
         http.Response(jsonEncode(expectedResponseError.toJson()), 401), null,
         error: expectedResponseError);
@@ -119,7 +118,7 @@ void main() {
     });
 
     test("Send message failed should return response error", () async {
-      ResponseError expectedResponseError = ResponseError(randomString(5));
+      ResponseError expectedResponseError = createResponseError();
       var expectedResponse = Response<List<Message>>(
           http.Response(jsonEncode(expectedResponseError.toJson()), 401), null,
           error: expectedResponseError);
@@ -158,7 +157,7 @@ void main() {
     });
 
     test("Reply message failed should return response error", () async {
-      ResponseError expectedResponseError = ResponseError(randomString(5));
+      ResponseError expectedResponseError = createResponseError();
       var expectedResponse = Response<List<Message>>(
           http.Response(jsonEncode(expectedResponseError.toJson()), 401), null,
           error: expectedResponseError);

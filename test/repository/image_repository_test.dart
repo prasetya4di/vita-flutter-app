@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:objectbox/objectbox.dart';
-import 'package:random_string/random_string.dart';
 import 'package:vita_client_app/data/model/entity/image_possibility.dart';
 import 'package:vita_client_app/data/model/response/response_error.dart';
 import 'package:vita_client_app/data/model/response/scanned_image.dart';
@@ -75,7 +74,7 @@ void main() {
     });
 
     test("Scan image failed should return response error", () async {
-      ResponseError expectedResponseError = ResponseError(randomString(5));
+      ResponseError expectedResponseError = createResponseError();
       var expectedResponse = Response<ScannedImage>(
           http.Response(jsonEncode(expectedResponseError.toJson()), 401), null,
           error: expectedResponseError);
