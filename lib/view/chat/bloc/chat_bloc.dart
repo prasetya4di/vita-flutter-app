@@ -13,7 +13,6 @@ import 'package:vita_client_app/domain/pick_image.dart';
 import 'package:vita_client_app/domain/reply_message.dart';
 import 'package:vita_client_app/domain/scan_image.dart';
 import 'package:vita_client_app/domain/send_message.dart';
-import 'package:vita_client_app/util/constant/dummy.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_error.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_state.dart';
 
@@ -116,7 +115,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<ReplyMessageEvent>((event, emit) async {
       emit(const ChatState.replyMessageSendingState());
       await Task(() {
-        var message = request2.ReplyMessage(Dummy.email, event.message);
+        var message = request2.ReplyMessage(event.message);
         messages.removeAt(0);
         messages.insert(0, message);
         return di<ReplyMessage>().call(message);

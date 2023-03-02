@@ -4,10 +4,9 @@ part 'reply_message.g.dart';
 
 @JsonSerializable()
 class ReplyMessage {
-  String email;
   String message;
 
-  ReplyMessage(this.email, this.message);
+  ReplyMessage(this.message);
 
   factory ReplyMessage.fromJson(Map<String, dynamic> json) =>
       _$ReplyMessageFromJson(json);

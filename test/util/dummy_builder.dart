@@ -4,6 +4,8 @@ import 'package:vita_client_app/data/model/entity/message.dart';
 import 'package:vita_client_app/data/model/entity/user.dart';
 import 'package:vita_client_app/data/model/request/login_request.dart';
 import 'package:vita_client_app/data/model/request/register_request.dart';
+import 'package:vita_client_app/data/model/request/reply_message.dart';
+import 'package:vita_client_app/data/model/request/send_message.dart';
 
 Message createMessage() => Message(
     randomBetween(0, 100),
@@ -15,6 +17,10 @@ Message createMessage() => Message(
 
 List<Message> createListMessage() =>
     [createMessage(), createMessage(), createMessage()];
+
+SendMessage createSendMessageRequest() => SendMessage(randomString(5));
+
+ReplyMessage createReplyMessageRequest() => ReplyMessage(randomString(5));
 
 User createUser() => User(
     randomString(5),
