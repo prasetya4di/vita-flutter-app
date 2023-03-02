@@ -12,9 +12,13 @@ class FetchMessageImpl implements FetchMessage {
   @override
   Future<List<Message>> call() async {
     var response = await _repository.getMessage();
-    var messages = response.body!;
-    _repository.clear();
-    _repository.inserts(messages);
-    return messages;
+    if (response.body != null) {
+      var messages = response.body!;
+      _repository.clear();
+      _repository.inserts(messages);
+      return messages;
+    } else {
+      return [];
+    }
   }
 }
