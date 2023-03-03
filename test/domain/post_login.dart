@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:chopper/chopper.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
@@ -51,9 +52,9 @@ void main() {
           error: expectedResponseError);
       when(mockUserRepository.login(request))
           .thenAnswer((_) => Future.value(expectedResponse));
-      var response = await mockUserRepository.login(request);
+      var response = await postLogin.call(request);
       verify(mockUserRepository.login(request));
-      expect(response, expectedResponse);
+      expect(response, Left(expectedResponseError));
     });
 
     test("Login error should throw an error", () {

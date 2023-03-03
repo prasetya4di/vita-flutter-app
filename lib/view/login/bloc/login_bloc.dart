@@ -11,13 +11,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(const LoginState.initial()) {
     on<PostLoginEvent>((event, emit) async {
       emit(const LoginState.loading());
-      await Task(() => di<PostLogin>().call(event.request))
-          .attempt()
-          .mapLeftToFailure()
-          .run()
-          .then((value) {
-        value.fold(
-            (failure) => emit(LoginState.error(failure.failure.toString())),
+      await Task(() => di<PostLogin>().call(event.request)).run().then((value) {
+        value.fold((failure) => emit(LoginState.error(failure.message)),
             (success) => emit(const LoginState.success()));
       }).catchError((error) {
         if (error is ResponseError) {
