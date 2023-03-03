@@ -38,9 +38,14 @@ void main() {
           expectedLoginResponse);
       when(mockUserRepository.login(request))
           .thenAnswer((_) => Future.value(expectedResponse));
-      var response = await mockUserRepository.login(request);
+      when(mockUserRepository.insert(expectedLoginResponse.user))
+          .thenReturn(() {});
+      when(mockUserRepository.clear()).thenReturn(() {});
+      var response = await postLogin.call(request);
       verify(mockUserRepository.login(request));
-      expect(response, expectedResponse);
+      verify(mockUserRepository.insert(expectedLoginResponse.user));
+      verify(mockUserRepository.clear());
+      expect(response, Right(expectedLoginResponse.user));
     });
 
     test("Login failed", () async {
