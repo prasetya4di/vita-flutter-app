@@ -52,8 +52,8 @@ void main() {
           error: expectedResponseError);
       when(mockRepository.getMessage())
           .thenAnswer((_) => Future.value(expectedResponse));
-      verifyNever(mockRepository.getMessage());
       var response = await fetchMessage.call();
+      verify(mockRepository.getMessage());
       expect(response, []);
     });
 
