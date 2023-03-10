@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(
               create: (_) => ChatBloc(
                   di.get(), di.get(), di.get(), di.get(), di.get(), di.get())),
-          BlocProvider(create: (_) => LoginBloc()),
+          BlocProvider(create: (_) => LoginBloc(di.get(), di.get())),
           BlocProvider(create: (_) => RegisterBloc()),
           BlocProvider(create: (_) => ProfileBloc())
         ],
