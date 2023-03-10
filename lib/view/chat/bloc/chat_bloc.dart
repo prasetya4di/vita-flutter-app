@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:vita_client_app/core/di.dart';
 import 'package:vita_client_app/data/model/request/reply_message.dart'
     as request2;
 import 'package:vita_client_app/data/model/request/send_message.dart'
@@ -17,13 +16,22 @@ import 'package:vita_client_app/view/chat/bloc/chat_error.dart';
 import 'package:vita_client_app/view/chat/bloc/chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
+  final LoadMessage _loadMessage;
+  final LoadPossibility _loadPossibility;
+  final SendMessage _sendMessage;
+  final PickImage _pickimage;
+  final ScanImage _scanImage;
+  final ReplyMessage _replyMessage;
+
   List messages = [];
 
-  ChatBloc() : super(const ChatInitialState()) {
+  ChatBloc(this._loadMessage, this._loadPossibility, this._sendMessage,
+      this._pickimage, this._scanImage, this._replyMessage)
+      : super(const ChatInitialState()) {
     on<LoadMessageEvent>((event, emit) async {
       emit(const ChatState.loading());
-      var loadMessageResult = await di<LoadMessage>().call();
-      var loadPossibilityResult = await di<LoadPossibility>().call();
+      var loadMessageResult = await _loadMessage.call();
+      var loadPossibilityResult = await _loadPossibility.call();
       messages.clear();
       messages.insertAll(0, loadMessageResult);
       if (loadPossibilityResult.length > 1) {
@@ -37,7 +45,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       await Task(() async {
         var message = request.SendMessage(event.message);
         messages.insert(0, message);
-        return await di<SendMessage>().call(message);
+        return await _sendMessage.call(message);
       }).run().then((value) {
         messages.removeAt(0);
         messages.insertAll(0, value.reversed.toList());
@@ -52,10 +60,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       emit(const ChatState.messageSendingState());
       await Task(() async {
         messages.removeWhere(
-            (e) => e is request.SendMessage && e.message == event.message);
+                (e) => e is request.SendMessage && e.message == event.message);
         var message = request.SendMessage(event.message);
         messages.insert(0, message);
-        return await di<SendMessage>().call(message);
+        return await _sendMessage.call(message);
       }).run().then((value) {
         messages.removeAt(0);
         messages.insertAll(0, value.reversed.toList());
@@ -68,12 +76,12 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
     on<ScanImageEvent>((event, emit) async {
       emit(const ChatState.imageUploadState());
-      await Task(() => di<PickImage>().call(event.source)).run().then((image) {
+      await Task(() => _pickimage.call(event.source)).run().then((image) {
         throwIf(image == null, ImageNotSelected());
         var uploadImage = UploadImage(image!);
         messages.insert(0, uploadImage);
         emit(const ChatState.imageSelectedState());
-        return Task(() => di<ScanImage>().call(image)).run();
+        return Task(() => _scanImage.call(image)).run();
       }).then((data) {
         messages.removeAt(0);
         messages.insertAll(0, data.messages.reversed);
@@ -95,10 +103,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       emit(const ChatState.imageUploadState());
       await Task(() {
         messages.removeWhere(
-            (e) => e is UploadImage && e.image.path == event.image.path);
+                (e) => e is UploadImage && e.image.path == event.image.path);
         var uploadImage = UploadImage(event.image);
         messages.insert(0, uploadImage);
-        return di<ScanImage>().call(event.image);
+        return _scanImage.call(event.image);
       }).run().then((data) {
         messages.removeAt(0);
         messages.insertAll(0, data.messages.reversed);
@@ -118,7 +126,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         var message = request2.ReplyMessage(event.message);
         messages.removeAt(0);
         messages.insert(0, message);
-        return di<ReplyMessage>().call(message);
+        return _replyMessage.call(message);
       }).run().then((data) {
         // Todo : Handle error when reply message failed
         data.fold((l) => emit(ChatState.error(l.message)), (r) {

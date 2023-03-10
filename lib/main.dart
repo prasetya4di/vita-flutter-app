@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => SplashBloc()),
-          BlocProvider(create: (_) => ChatBloc()),
+          BlocProvider(
+              create: (_) => ChatBloc(
+                  di.get(), di.get(), di.get(), di.get(), di.get(), di.get())),
           BlocProvider(create: (_) => LoginBloc()),
           BlocProvider(create: (_) => RegisterBloc()),
           BlocProvider(create: (_) => ProfileBloc())
