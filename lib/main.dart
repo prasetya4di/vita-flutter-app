@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
                   di.get(), di.get(), di.get(), di.get(), di.get(), di.get())),
           BlocProvider(create: (_) => LoginBloc(di.get(), di.get())),
           BlocProvider(create: (_) => RegisterBloc()),
-          BlocProvider(create: (_) => ProfileBloc())
+          BlocProvider(create: (_) => ProfileBloc(di.get(), di.get()))
         ],
         child: MaterialApp(
           title: 'Vita',
