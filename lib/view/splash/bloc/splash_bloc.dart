@@ -1,22 +1,25 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vita_client_app/core/di.dart';
 import 'package:vita_client_app/domain/check_login.dart';
 import 'package:vita_client_app/domain/fetch_message.dart';
 import 'package:vita_client_app/util/extension/either_extension.dart';
 import 'package:vita_client_app/view/splash/bloc/splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
-  SplashBloc() : super(const SplashInitialState()) {
+  final CheckLogin _checkLogin;
+  final FetchMessage _fetchMessage;
+
+  SplashBloc(this._checkLogin, this._fetchMessage)
+      : super(const SplashInitialState()) {
     on<CheckLoginEvent>((event, emit) async {
       emit(const SplashState.loading());
-      var isLoggedIn = di<CheckLogin>().call();
+      var isLoggedIn = _checkLogin.call();
       emit(SplashState.checkLoginState(isLoggedIn));
     });
 
     on<GetMessageEvent>((event, emit) async {
       emit(const SplashState.loading());
-      await Task(() => di<FetchMessage>().call())
+      await Task(() => _fetchMessage.call())
           .attempt()
           .mapLeftToFailure()
           .run()

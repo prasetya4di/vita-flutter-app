@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => SplashBloc()),
+          BlocProvider(create: (_) => SplashBloc(di.get(), di.get())),
           BlocProvider(
               create: (_) => ChatBloc(
                   di.get(), di.get(), di.get(), di.get(), di.get(), di.get())),
