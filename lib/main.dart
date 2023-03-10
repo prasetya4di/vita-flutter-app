@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Vita',
+          debugShowCheckedModeBanner: false,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           routes: {

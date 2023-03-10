@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vita_client_app/core/di.dart';
 import 'package:vita_client_app/data/model/request/reply_message.dart'
-as request2;
+    as request2;
 import 'package:vita_client_app/data/model/request/send_message.dart'
-as request;
+    as request;
 import 'package:vita_client_app/data/model/request/upload_image.dart';
 import 'package:vita_client_app/domain/load_message.dart';
 import 'package:vita_client_app/domain/load_possibility.dart';
@@ -120,9 +120,11 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         messages.insert(0, message);
         return di<ReplyMessage>().call(message);
       }).run().then((data) {
-        messages.removeAt(0);
-        messages.insertAll(0, data.reversed.toList());
-        emit(const ChatState.replyMessageSendedState());
+        data.fold((l) => emit(ChatState.error(l.message)), (r) {
+          messages.removeAt(0);
+          messages.insertAll(0, r.reversed.toList());
+          emit(const ChatState.replyMessageSendedState());
+        });
       }).catchError((error) {
         emit(ChatState.error(error.toString()));
       });
