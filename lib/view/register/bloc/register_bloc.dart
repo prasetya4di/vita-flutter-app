@@ -7,7 +7,9 @@ import 'package:vita_client_app/util/extension/either_extension.dart';
 import 'package:vita_client_app/view/register/bloc/register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  RegisterBloc() : super(const RegisterState.initial()) {
+  final PostRegister _postRegister;
+
+  RegisterBloc(this._postRegister) : super(const RegisterState.initial()) {
     on<PostRegisterEvent>((event, emit) async {
       emit(const RegisterState.loading());
       await Task(() => di<PostRegister>().call(event.request))

@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
               create: (_) => ChatBloc(
                   di.get(), di.get(), di.get(), di.get(), di.get(), di.get())),
           BlocProvider(create: (_) => LoginBloc(di.get(), di.get())),
-          BlocProvider(create: (_) => RegisterBloc()),
+          BlocProvider(create: (_) => RegisterBloc(di.get())),
           BlocProvider(create: (_) => ProfileBloc(di.get(), di.get()))
         ],
         child: MaterialApp(
