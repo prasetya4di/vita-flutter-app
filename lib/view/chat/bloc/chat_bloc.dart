@@ -120,6 +120,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         messages.insert(0, message);
         return di<ReplyMessage>().call(message);
       }).run().then((data) {
+        // Todo : Handle error when reply message failed
         data.fold((l) => emit(ChatState.error(l.message)), (r) {
           messages.removeAt(0);
           messages.insertAll(0, r.reversed.toList());
