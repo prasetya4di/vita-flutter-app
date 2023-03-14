@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:objectbox/objectbox.dart';
+import 'package:vita_client_app/util/converter/date_time_converter.dart';
 
 part 'message.g.dart';
 
@@ -13,6 +14,7 @@ class Message extends Equatable {
   int id;
   String email;
   String message;
+  @DatetimeJsonConverter()
   @Property(type: PropertyType.date)
   @JsonKey(name: "created_date")
   DateTime createdDate;
