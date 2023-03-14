@@ -39,13 +39,13 @@ class ChatSending extends StatelessWidget {
               ChatTextTime(time: DateTime.now()),
             ],
           ),
-          InkWell(
-            onTap: () {
-              if (isError) {
-                context.read<ChatBloc>().add(ResendMessageEvent(message));
-              }
-            },
-            child: Flexible(
+          Flexible(
+            child: InkWell(
+              onTap: () {
+                if (isError) {
+                  context.read<ChatBloc>().add(ResendMessageEvent(message));
+                }
+              },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
