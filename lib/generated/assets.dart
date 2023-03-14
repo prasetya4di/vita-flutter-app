@@ -11,6 +11,8 @@ class Assets {
   static const String imagesIcArchive = 'assets/images/ic_archive.svg';
   static const String imagesIcCalendar = 'assets/images/ic_calendar.svg';
   static const String imagesIcCamera = 'assets/images/ic_camera.svg';
+  static const String imagesIcEye = 'assets/images/ic_eye.svg';
+  static const String imagesIcEyeSlash = 'assets/images/ic_eye_slash.svg';
   static const String imagesIcGallery = 'assets/images/ic_gallery.svg';
   static const String imagesIcInfoError = 'assets/images/ic_info_error.svg';
   static const String imagesIcUpload = 'assets/images/ic_upload.svg';

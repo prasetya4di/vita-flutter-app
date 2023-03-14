@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vita_client_app/generated/assets.dart';
 import 'package:vita_client_app/view/widgets/space_vertical.dart';
 import 'package:vita_client_app/view/widgets/user_form_field.dart';
 
@@ -17,23 +19,46 @@ class _PasswordsFormField extends State<PasswordsFormField> {
   final TextEditingController _repeatPasswordController =
       TextEditingController();
 
+  bool isPasswordVisible = false;
+  bool isRepeatPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         UserFormField(
+            suffix: _eyeIcon(isPasswordVisible, (value) {
+              setState(() {
+                isPasswordVisible = value;
+              });
+            }),
             onSave: widget.onSave,
-            obscureText: true,
+            obscureText: !isPasswordVisible,
             label: AppLocalizations.of(context).textPassword,
             controller: _passwordController,
             validator: _validatePassword),
         const SpaceVertical(),
         UserFormField(
-            obscureText: true,
+            suffix: _eyeIcon(isRepeatPasswordVisible, (value) {
+              setState(() {
+                isRepeatPasswordVisible = value;
+              });
+            }),
+            obscureText: !isRepeatPasswordVisible,
             label: AppLocalizations.of(context).textRepeatPassword,
             controller: _repeatPasswordController,
             validator: _validateRepeatPassword)
       ],
+    );
+  }
+
+  Widget _eyeIcon(bool isVisible, Function(bool) onPressed) {
+    return IconButton(
+      onPressed: () {
+        onPressed(!isVisible);
+      },
+      icon: SvgPicture.asset(
+          isVisible ? Assets.imagesIcEye : Assets.imagesIcEyeSlash),
     );
   }
 
