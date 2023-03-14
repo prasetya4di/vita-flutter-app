@@ -27,7 +27,7 @@ class ProfileScreen extends StatelessWidget {
       body: BlocConsumer<ProfileBloc, ProfileState>(listener: (context, state) {
         if (state is ProfileLogoutState) {
           Navigator.pushNamedAndRemoveUntil(
-              context, Routes.login, (route) => true);
+              context, Routes.login, (route) => false);
         }
       }, builder: (context, state) {
         return SafeArea(
