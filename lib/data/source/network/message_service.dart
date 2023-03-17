@@ -12,7 +12,7 @@ abstract class MessageService extends ChopperService {
   static MessageService create([ChopperClient? client]) =>
       _$MessageService(client);
 
-  @Get(path: "/")
+  @Get()
   Future<Response<List<Message>>> getMessage();
 
   @Post()

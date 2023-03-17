@@ -13,8 +13,8 @@ class ImageDaoImpl implements ImageDao {
   Future<XFile?> pickImage(ImageSource source) async {
     XFile? pickedFile = await _imgPicker.pickImage(
       source: source,
-      maxWidth: 1800,
-      maxHeight: 1800,
+      maxWidth: 500,
+      maxHeight: 500,
     );
     return pickedFile;
   }

@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vita_client_app/core/di.dart';
 import 'package:vita_client_app/data/model/response/response_error.dart';
 import 'package:vita_client_app/domain/post_register.dart';
 import 'package:vita_client_app/util/extension/either_extension.dart';
@@ -12,7 +11,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   RegisterBloc(this._postRegister) : super(const RegisterState.initial()) {
     on<PostRegisterEvent>((event, emit) async {
       emit(const RegisterState.loading());
-      await Task(() => di<PostRegister>().call(event.request))
+      await Task(() => _postRegister.call(event.request))
           .attempt()
           .mapLeftToFailure()
           .run()
