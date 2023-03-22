@@ -11,7 +11,6 @@ class Message extends Equatable {
   @Id()
   @JsonKey(includeToJson: false, includeFromJson: false)
   int obxId = 0;
-  @JsonKey(name: "ID")
   int id;
   String email;
   String message;
