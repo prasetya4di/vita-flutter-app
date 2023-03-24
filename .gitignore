@@ -36,6 +36,7 @@ pubspec.lock
 *.chopper.dart
 *.freezed.dart
 *.mocks.dart
+firebase_options.dart
 
 # Symbolication related
 app.*.symbols
