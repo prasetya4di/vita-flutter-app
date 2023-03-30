@@ -33,6 +33,10 @@ jobs:
       - name: Install object box to local machine
         run: bash <(curl -s https://raw.githubusercontent.com/objectbox/objectbox-dart/main/install.sh)
       
+      # Update localization
+      - name: Build all localization file
+        run: flutter gen-l10n
+      
       # Build all generated file
       - name: Build all generated file
         run: flutter pub run build_runner build --delete-conflicting-outputs
