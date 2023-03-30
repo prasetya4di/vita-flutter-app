@@ -3,14 +3,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'profile_state.freezed.dart';
 
 @freezed
-abstract class ProfileEvent with _$ProfileEvent {
+class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.onGetProfile() = GetProfileEvent;
 
   const factory ProfileEvent.onLogout() = LogoutEvent;
 }
 
 @freezed
-abstract class ProfileState with _$ProfileState {
+class ProfileState with _$ProfileState {
   const factory ProfileState.initial() = ProfileInitialState;
 
   const factory ProfileState.loading() = ProfileLoadingState;
