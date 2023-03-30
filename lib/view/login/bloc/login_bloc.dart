@@ -12,36 +12,43 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   LoginBloc(this._postLogin, this._fetchMessage)
       : super(const LoginState.initial()) {
-    on<PostLoginEvent>((event, emit) async {
-      emit(const LoginState.loading());
-      await Task(() => _postLogin.call(event.request)).run().then((value) {
-        value.fold((failure) => emit(LoginState.error(failure.message)),
-            (success) => emit(const LoginState.success()));
-      }).catchError((error) {
-        if (error is ResponseError) {
-          emit(LoginState.error(error.message));
-        } else {
-          emit(LoginState.error(error.toString()));
-        }
-      });
-    });
-
-    on<FetchMessageEvent>((event, emit) async {
-      emit(const LoginState.fetchMessageLoading());
-      await Task(() => _fetchMessage.call())
-          .attempt()
-          .mapLeftToFailure()
-          .run()
-          .then((value) {
-        value.fold((l) => emit(LoginState.error(l.failure.toString())),
-            (r) => emit(const LoginState.fetchMessageSuccess()));
-      }).catchError((error) {
-        if (error is ResponseError) {
-          emit(LoginState.error(error.message));
-        } else {
-          emit(LoginState.error(error.toString()));
-        }
-      });
+    on<LoginEvent>((event, emit) async {
+      await event.when(
+        onLogin: (request) async {
+          emit(const LoginState.loading());
+          await Task(
+            () => _postLogin.call(request),
+          ).run().then((value) {
+            value.fold(
+              (failure) => emit(LoginState.error(failure.message)),
+              (success) => emit(const LoginState.success()),
+            );
+          }).catchError((error) {
+            if (error is ResponseError) {
+              emit(LoginState.error(error.message));
+            } else {
+              emit(LoginState.error(error.toString()));
+            }
+          });
+        },
+        onFetchMessage: () async {
+          emit(const LoginState.fetchMessageLoading());
+          await Task(
+            () => _fetchMessage.call(),
+          ).attempt().mapLeftToFailure().run().then((value) {
+            value.fold(
+              (l) => emit(LoginState.error(l.failure.toString())),
+              (r) => emit(const LoginState.fetchMessageSuccess()),
+            );
+          }).catchError((error) {
+            if (error is ResponseError) {
+              emit(LoginState.error(error.message));
+            } else {
+              emit(LoginState.error(error.toString()));
+            }
+          });
+        },
+      );
     });
   }
 }
