@@ -4,14 +4,14 @@ import 'package:vita_client_app/data/model/request/login_request.dart';
 part 'login_state.freezed.dart';
 
 @freezed
-abstract class LoginEvent with _$LoginEvent {
+class LoginEvent with _$LoginEvent {
   const factory LoginEvent.onLogin(LoginRequest request) = PostLoginEvent;
 
   const factory LoginEvent.onFetchMessage() = FetchMessageEvent;
 }
 
 @freezed
-abstract class LoginState with _$LoginState {
+class LoginState with _$LoginState {
   const factory LoginState.initial() = LoginInitialState;
 
   const factory LoginState.loading() = LoginLoadingState;

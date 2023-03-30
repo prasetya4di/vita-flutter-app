@@ -11,22 +11,22 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
   SplashBloc(this._checkLogin, this._fetchMessage)
       : super(const SplashInitialState()) {
-    on<CheckLoginEvent>((event, emit) async {
-      emit(const SplashState.loading());
-      var isLoggedIn = _checkLogin.call();
-      emit(SplashState.checkLoginState(isLoggedIn));
-    });
-
-    on<GetMessageEvent>((event, emit) async {
-      emit(const SplashState.loading());
-      await Task(() => _fetchMessage.call())
-          .attempt()
-          .mapLeftToFailure()
-          .run()
-          .then((value) => value.fold(
-              (l) => emit(SplashState.error(l.failure.toString())),
-              (r) => emit(const SplashState.loadedState())))
-          .catchError((error) => emit(SplashState.error(error.toString())));
+    on<SplashEvent>((event, emit) async {
+      await event.when(onGetMessage: () {
+        emit(const SplashState.loading());
+        var isLoggedIn = _checkLogin.call();
+        emit(SplashState.checkLoginState(isLoggedIn));
+      }, onCheckLogin: () async {
+        emit(const SplashState.loading());
+        await Task(() => _fetchMessage.call())
+            .attempt()
+            .mapLeftToFailure()
+            .run()
+            .then((value) => value.fold(
+                (l) => emit(SplashState.error(l.failure.toString())),
+                (r) => emit(const SplashState.loadedState())))
+            .catchError((error) => emit(SplashState.error(error.toString())));
+      });
     });
   }
 }

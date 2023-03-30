@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 part 'chat_state.freezed.dart';
 
 @freezed
-abstract class ChatEvent with _$ChatEvent {
+class ChatEvent with _$ChatEvent {
   const factory ChatEvent.onLoadMessage() = LoadMessageEvent;
 
   const factory ChatEvent.onSendMessage(String message) = SendMessageEvent;
@@ -19,7 +19,7 @@ abstract class ChatEvent with _$ChatEvent {
 }
 
 @freezed
-abstract class ChatState with _$ChatState {
+class ChatState with _$ChatState {
   const factory ChatState.initial() = ChatInitialState;
 
   const factory ChatState.loading() = ChatLoadingState;

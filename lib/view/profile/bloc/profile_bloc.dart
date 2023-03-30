@@ -12,16 +12,19 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   ProfileBloc(this._getUser, this._logout)
       : super(const ProfileState.initial()) {
-    on<GetProfileEvent>((event, emit) async {
-      emit(const ProfileState.loading());
-      user = _getUser.call();
-      emit(const ProfileState.success());
-    });
-
-    on<LogoutEvent>((event, emit) async {
-      emit(const ProfileState.loading());
-      _logout.call();
-      emit(const ProfileState.logout());
+    on<ProfileEvent>((event, emit) {
+      event.when(
+        onGetProfile: () {
+          emit(const ProfileState.loading());
+          user = _getUser.call();
+          emit(const ProfileState.success());
+        },
+        onLogout: () {
+          emit(const ProfileState.loading());
+          _logout.call();
+          emit(const ProfileState.logout());
+        },
+      );
     });
   }
 }

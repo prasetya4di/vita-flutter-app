@@ -3,14 +3,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'splash_state.freezed.dart';
 
 @freezed
-abstract class SplashEvent with _$SplashEvent {
+class SplashEvent with _$SplashEvent {
   const factory SplashEvent.onGetMessage() = GetMessageEvent;
 
   const factory SplashEvent.onCheckLogin() = CheckLoginEvent;
 }
 
 @freezed
-abstract class SplashState with _$SplashState {
+class SplashState with _$SplashState {
   const factory SplashState.initial() = SplashInitialState;
 
   const factory SplashState.loading() = SplashLoadingState;
