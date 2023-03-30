@@ -19,6 +19,7 @@ class User extends Equatable {
   String lastName;
   String nickname;
   @JsonKey(name: "birth_date")
+  @Property(type: PropertyType.date)
   DateTime birthDate;
   String token;
 
