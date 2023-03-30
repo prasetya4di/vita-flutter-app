@@ -34,7 +34,7 @@ void main() {
     XFile expectedFile = createXFile();
     ImageSource expectedImageSource = createImageSource();
     when(mockImagePicker.pickImage(
-            source: expectedImageSource, maxWidth: 1800, maxHeight: 1800))
+            source: expectedImageSource, maxWidth: 500, maxHeight: 500))
         .thenAnswer((_) => Future.value(expectedFile));
     XFile? pickedFile = await imageDao.pickImage(expectedImageSource);
     expect(pickedFile?.path, expectedFile.path);
@@ -44,7 +44,7 @@ void main() {
   test("Pick image canceled should return null", () async {
     ImageSource expectedImageSource = createImageSource();
     when(mockImagePicker.pickImage(
-            source: expectedImageSource, maxWidth: 1800, maxHeight: 1800))
+            source: expectedImageSource, maxWidth: 500, maxHeight: 500))
         .thenAnswer((_) => Future.value(null));
     XFile? pickedFile = await imageDao.pickImage(expectedImageSource);
     expect(pickedFile?.path, null);
