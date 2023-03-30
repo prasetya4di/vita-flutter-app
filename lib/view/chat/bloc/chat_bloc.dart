@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vita_client_app/data/model/request/reply_message.dart'
@@ -137,6 +138,15 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       }).catchError((error) {
         emit(ChatState.error(error.toString()));
       });
+    });
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print('Got a message whilst in the foreground!');
+      print('Message data: ${message.data}');
+
+      if (message.notification != null) {
+        print('Message also contained a notification: ${message.notification}');
+      }
     });
   }
 }

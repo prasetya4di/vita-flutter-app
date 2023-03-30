@@ -26,6 +26,7 @@ SendMessage createSendMessageRequest() => SendMessage(randomString(5));
 ReplyMessage createReplyMessageRequest() => ReplyMessage(randomString(5));
 
 User createUser() => User(
+    randomBetween(0, 100),
     randomString(5),
     randomString(5),
     randomString(5),
