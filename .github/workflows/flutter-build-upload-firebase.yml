@@ -61,13 +61,9 @@ jobs:
       - name: Configure flutter fire to add google service file
         run: flutterfire configure --project=vita-377401 --platforms="android,ios" --ios-bundle-id="$PACKAGE_NAME" --macos-bundle-id="$PACKAGE_NAME" --android-package-name="$PACKAGE_NAME" --token="$FIREBASE_TOKEN"
 
-      # Increment build number
-      - name: Increase build number
-        run: echo $(( $BUILD_NUMBER + 1 )) >> $GITHUB_ENV
-
       # Build apk 
       - name: Build APK
-        run: flutter build apk --build_number = $BUILD_NUMBER
+        run: flutter build apk --build_number="$BUILD_NUMBER"
         
       # Upload apk
       - name: Upload APK
