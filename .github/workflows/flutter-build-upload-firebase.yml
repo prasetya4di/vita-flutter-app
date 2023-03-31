@@ -46,9 +46,13 @@ jobs:
         with:
          java-version: '12.x'
         
+      # Enable flutter fire
+      - name: Enable flutter fire
+        run: dart pub global activate flutterfire_cli
+      
       # Configure firebase
-      - name: Enable flutter fire and configure it
-        run: dart pub global activate flutterfire_cli && export PATH="$PATH":"$HOME/.pub-cache/bin" && flutterfire configure --project=vita-377401 --yes
+      - name: Configure flutter fire to add google service file
+        run: flutterfire configure --project=vita-377401 --yes
 
       # Build apk 
       - name: Build APK
