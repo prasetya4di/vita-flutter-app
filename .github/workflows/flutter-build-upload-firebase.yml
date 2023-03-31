@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
     
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -46,6 +46,20 @@ jobs:
         with:
          java-version: '12.x'
          
+      # Setup firebase 
+      - name: Set up Firebase
+        uses: actions/setup-node@v2
+        with:
+         node-version: '14.x'
+        
+      # Authenticate firebase
+      - name: Authenticate with Firebase
+        run: firebase login:ci --no-localhost --token "$FIREBASE_TOKEN"
+        
+      # Configure firebase
+      - name: Enable flutter fire and configure it
+        run: dart pub global activate flutterfire_cli && export PATH="$PATH":"$HOME/.pub-cache/bin" && flutterfire configure --project=vita-377401 --yes
+
       # Build apk 
       - name: Build APK
         run: flutter build apk
@@ -56,16 +70,6 @@ jobs:
         with:
          name: myapp.apk
          path: build/app/outputs/flutter-apk/app-release.apk
-         
-      # Setup firebase 
-      - name: Set up Firebase
-        uses: actions/setup-node@v2
-        with:
-         node-version: '14.x'
-        
-      # Authenticate firebase
-      - name: Authenticate with Firebase
-        run: firebase login:ci --no-localhost --token "$FIREBASE_TOKEN"
 
       # Distribute apk to firebase
       - name: Distribute APK
