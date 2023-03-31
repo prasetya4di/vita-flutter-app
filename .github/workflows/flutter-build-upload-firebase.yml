@@ -53,7 +53,7 @@ jobs:
         
       # Login to firebase  
       - name: Login to Firebase
-        uses: firebase-actions/setup-firebase@v2
+        uses: pocket-apps/action-setup-firebase@v2
         with:
           firebase-token: $FIREBASE_TOKEN
       
