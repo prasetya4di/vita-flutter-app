@@ -49,6 +49,10 @@ jobs:
       # Enable flutter fire
       - name: Enable flutter fire
         run: dart pub global activate flutterfire_cli
+        
+      # Install firebase cli
+      - name: Install firebase cli
+        run: curl -sL https://firebase.tools | bash
       
       # Configure firebase
       - name: Configure flutter fire to add google service file
