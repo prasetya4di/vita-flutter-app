@@ -52,7 +52,7 @@ jobs:
       
       # Configure firebase
       - name: Configure flutter fire to add google service file
-        run: flutterfire configure --project=vita-377401 --yes
+        run: flutterfire configure --project=vita-377401 --platforms="android"
 
       # Build apk 
       - name: Build APK
