@@ -51,13 +51,11 @@ jobs:
       - name: Enable flutter fire
         run: dart pub global activate flutterfire_cli
         
-      # Install firebase cli
-      - name: Install firebase cli
-        run: curl -sL https://firebase.tools | bash
-      
-      # Connect to firebase
-      - name: Connect to firebase
-        run: firebase login:ci --no-localhost --token "$FIREBASE_TOKEN"
+      # Login to firebase  
+      - name: Login to Firebase
+        uses: firebase-actions/setup-firebase@v2
+        with:
+          firebase-token: $FIREBASE_TOKEN
       
       # Configure firebase
       - name: Configure flutter fire to add google service file
