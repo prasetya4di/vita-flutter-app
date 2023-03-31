@@ -54,6 +54,10 @@ jobs:
       - name: Install firebase cli
         run: curl -sL https://firebase.tools | bash
       
+      # Connect to firebase
+      - name: Connect to firebase
+        run: firebase login:ci --token ${{secrets.FIREBASE_TOKEN}}
+      
       # Configure firebase
       - name: Configure flutter fire to add google service file
         run: flutterfire configure --project=vita-377401 --platforms="android,ios" --ios-bundle-id="com.vita.app" --macos-bundle-id="com.vita.app"
