@@ -54,7 +54,7 @@ jobs:
         
       # Authenticate firebase
       - name: Authenticate with Firebase
-        run: firebase login:ci --no-localhost --token "$FIREBASE_TOKEN"
+        run: firebase login:ci --no-localhost --token "${{ secrets.FIREBASE_TOKEN }}"
         
       # Configure firebase
       - name: Enable flutter fire and configure it
@@ -66,7 +66,7 @@ jobs:
         
       # Upload apk
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         with:
          name: myapp.apk
          path: build/app/outputs/flutter-apk/app-release.apk
