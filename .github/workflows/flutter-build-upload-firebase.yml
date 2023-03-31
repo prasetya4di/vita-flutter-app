@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      PACKAGE_NAME: "com.vita.app"
     steps:
       - uses: actions/checkout@v3
 
@@ -57,7 +58,7 @@ jobs:
       
       # Configure firebase
       - name: Configure flutter fire to add google service file
-        run: flutterfire configure --project=vita-377401 --platforms="android,ios" --ios-bundle-id="com.vita.app" --macos-bundle-id="com.vita.app" --token="$FIREBASE_TOKEN"
+        run: flutterfire configure --project=vita-377401 --platforms="android,ios" --ios-bundle-id="$PACKAGE_NAME" --macos-bundle-id="$PACKAGE_NAME" --android-package-name="$PACKAGE_NAME" --token="$FIREBASE_TOKEN"
 
       # Build apk 
       - name: Build APK
