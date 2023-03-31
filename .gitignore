@@ -9,6 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
+*.json
 
 # IntelliJ related
 *.iml
@@ -51,3 +52,4 @@ app.*.map.json
 .env*
 /coverage/
 genhtml.perl
+/ios/Runner/GoogleService-Info.plist
