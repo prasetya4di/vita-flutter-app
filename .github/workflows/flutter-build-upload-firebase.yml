@@ -45,16 +45,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
          java-version: '12.x'
-         
-      # Setup firebase 
-      - name: Set up Firebase
-        uses: actions/setup-node@v2
-        with:
-         node-version: '14.x'
-        
-      # Authenticate firebase
-      - name: Authenticate with Firebase
-        run: firebase login:ci --no-localhost --token "${{ secrets.FIREBASE_TOKEN }}"
         
       # Configure firebase
       - name: Enable flutter fire and configure it
@@ -68,11 +58,14 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
-         name: myapp.apk
+         name: release-apk
          path: build/app/outputs/flutter-apk/app-release.apk
-
-      # Distribute apk to firebase
-      - name: Distribute APK
-        run: firebase appdistribution:distribute myapp.apk --app myapp --release-notes "Version 1.0.0"
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        
+      # Distribute apk
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+            appId: ${{secrets.FIREBASE_APP_ID}}
+            token: ${{secrets.FIREBASE_TOKEN}}
+            groups: testers
+            file: build/app/outputs/flutter-apk/app.apk
