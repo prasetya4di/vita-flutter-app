@@ -57,7 +57,7 @@ jobs:
       
       # Connect to firebase
       - name: Connect to firebase
-        run: firebase login:ci --no-localhost --token "$FIREBASE_TOKEN" default
+        run: firebase login:ci --no-localhost --token "$FIREBASE_TOKEN"
       
       # Configure firebase
       - name: Configure flutter fire to add google service file
