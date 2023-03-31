@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
     
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,19 +35,11 @@ jobs:
       # Build all generated file
       - name: Build all generated file
         run: flutter pub run build_runner build --delete-conflicting-outputs
-
-  run-test:
-    runs-on: ubuntu-latest
-    
-    steps:
+     
       # Run all unit test
       - name: Run tests
         run: flutter test
-   
-  build-apk:
-    runs-on: ubuntu-latest
-    
-    steps:
+ 
       # Set Java
       - name: Set up Java
         uses: actions/setup-java@v1
