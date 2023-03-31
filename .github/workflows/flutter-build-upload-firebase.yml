@@ -50,16 +50,14 @@ jobs:
       # Enable flutter fire
       - name: Enable flutter fire
         run: dart pub global activate flutterfire_cli
-        
-      # Login to firebase  
-      - name: Login to Firebase
-        uses: pocket-apps/action-setup-firebase@v2
-        with:
-          firebase-token: $FIREBASE_TOKEN
+      
+      # Install firebase tools
+      - name: Install firebase tools
+        run: curl -sL https://firebase.tools | bash
       
       # Configure firebase
       - name: Configure flutter fire to add google service file
-        run: flutterfire configure --project=vita-377401 --platforms="android,ios" --ios-bundle-id="com.vita.app" --macos-bundle-id="com.vita.app"
+        run: flutterfire configure --project=vita-377401 --platforms="android,ios" --ios-bundle-id="com.vita.app" --macos-bundle-id="com.vita.app" --token="$FIREBASE_TOKEN"
 
       # Build apk 
       - name: Build APK
