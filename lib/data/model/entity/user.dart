@@ -10,8 +10,6 @@ class User extends Equatable {
   @Id()
   @JsonKey(includeToJson: false, includeFromJson: false)
   int obxId = 0;
-  @JsonKey(name: "id")
-  int id;
   String email;
   @JsonKey(name: "first_name")
   String firstName;
@@ -23,7 +21,7 @@ class User extends Equatable {
   DateTime birthDate;
   String token;
 
-  User(this.id, this.email, this.firstName, this.lastName, this.nickname,
+  User(this.email, this.firstName, this.lastName, this.nickname,
       this.birthDate, this.token);
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

@@ -111,11 +111,6 @@
           "id": "7:8942693197993029986",
           "name": "token",
           "type": 9
-        },
-        {
-          "id": "8:7970546119143803357",
-          "name": "id",
-          "type": 6
         }
       ],
       "relations": []
@@ -130,7 +125,8 @@
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
-    6732175492865245919
+    6732175492865245919,
+    7970546119143803357
   ],
   "retiredRelationUids": [],
   "version": 1
