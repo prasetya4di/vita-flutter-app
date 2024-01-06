@@ -18,7 +18,7 @@ class _EmailFormField extends State<EmailFormField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(AppLocalizations.of(context).textEmail,
+        Text(AppLocalizations.of(context)!.textEmail,
             style: Theme.of(context).textTheme.labelMedium),
         const SpaceVertical(),
         TextFormField(
@@ -49,7 +49,7 @@ class _EmailFormField extends State<EmailFormField> {
     final regex = RegExp(pattern);
 
     return value!.isEmpty && !regex.hasMatch(value)
-        ? AppLocalizations.of(context).textEmptyEmail
+        ? AppLocalizations.of(context)!.textEmptyEmail
         : null;
   }
 }

@@ -29,7 +29,7 @@ class SplashScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      AppLocalizations.of(context).fetchingInformation,
+                      AppLocalizations.of(context)!.fetchingInformation,
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                   )

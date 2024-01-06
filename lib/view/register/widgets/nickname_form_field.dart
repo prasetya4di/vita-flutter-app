@@ -15,7 +15,7 @@ class _NickNameFormField extends State<NicknameFormField> {
   @override
   Widget build(BuildContext context) {
     return UserFormField(
-      label: AppLocalizations.of(context).textNickname,
+      label: AppLocalizations.of(context)!.textNickname,
       validator: _validateNickname,
       onSave: widget.onSave,
     );
@@ -23,7 +23,7 @@ class _NickNameFormField extends State<NicknameFormField> {
 
   String? _validateNickname(String? value) {
     if (value != null && value.isEmpty) {
-      return AppLocalizations.of(context).textEmptyNickname;
+      return AppLocalizations.of(context)!.textEmptyNickname;
     } else {
       return null;
     }

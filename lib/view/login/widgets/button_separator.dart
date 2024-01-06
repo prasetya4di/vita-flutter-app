@@ -15,7 +15,7 @@ class ButtonSeparator extends StatelessWidget {
         )),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-          child: Text(AppLocalizations.of(context).textOr,
+          child: Text(AppLocalizations.of(context)!.textOr,
               style: Theme.of(context).textTheme.labelLarge),
         ),
         const Expanded(

@@ -26,20 +26,20 @@ class _PolicyAgreement extends State<PolicyAgreement> {
           borderRadius: BorderRadius.all(Radius.circular(4))),
       title: RichText(
         text: TextSpan(
-          text: AppLocalizations.of(context).textAgreeTo,
+          text: AppLocalizations.of(context)!.textAgreeTo,
           style: Theme.of(context).textTheme.bodyMedium,
           children: <TextSpan>[
             TextSpan(
-                text: AppLocalizations.of(context).textUserAgreement,
+                text: AppLocalizations.of(context)!.textUserAgreement,
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     // Todo: show dialog user agreement
                   },
                 style: const TextStyle(
                     color: AssetColor.blue200, fontWeight: FontWeight.w600)),
-            TextSpan(text: AppLocalizations.of(context).textAnd),
+            TextSpan(text: AppLocalizations.of(context)!.textAnd),
             TextSpan(
-                text: AppLocalizations.of(context).textPrivacyPolicy,
+                text: AppLocalizations.of(context)!.textPrivacyPolicy,
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     // Todo: show dialog user privacy policy

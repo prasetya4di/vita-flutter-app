@@ -44,7 +44,7 @@ class _ChatPossibilities extends State<ChatPossibilities> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(AppLocalizations.of(context).textPossibilitiesFound,
+                  Text(AppLocalizations.of(context)!.textPossibilitiesFound,
                       style: Theme.of(context).textTheme.bodyMedium),
                   _buildRadioPossibility(),
                   MaterialButton(
@@ -56,7 +56,7 @@ class _ChatPossibilities extends State<ChatPossibilities> {
                             widget.onSelect(_selectedPossibility!);
                           },
                     child: Text(
-                      AppLocalizations.of(context).textSelect,
+                      AppLocalizations.of(context)!.textSelect,
                       style: const TextStyle(
                           fontFamily: poppins,
                           fontWeight: FontWeight.w400,

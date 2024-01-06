@@ -26,7 +26,7 @@ class LoadingDialog {
                       padding: const EdgeInsets.only(left: 16.0),
                       child: child ??
                           Text(
-                            message ?? AppLocalizations.of(context).textLoading,
+                            message ?? AppLocalizations.of(context)!.textLoading,
                           ),
                     ),
                   ],

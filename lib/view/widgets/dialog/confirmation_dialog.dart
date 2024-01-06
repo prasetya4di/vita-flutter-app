@@ -13,7 +13,7 @@ Future<bool> showConfirmationDialog(
             onCloseTap: () {
               Navigator.pop(context, false);
             },
-            title: AppLocalizations.of(context).textConfirmation,
+            title: AppLocalizations.of(context)!.textConfirmation,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -26,7 +26,7 @@ Future<bool> showConfirmationDialog(
                         onPressed: () {
                           Navigator.pop(context, false);
                         },
-                        child: Text(AppLocalizations.of(context).textNo),
+                        child: Text(AppLocalizations.of(context)!.textNo),
                       ),
                     ),
                     const SpaceHorizontal(),
@@ -35,7 +35,7 @@ Future<bool> showConfirmationDialog(
                           onPressed: () {
                             Navigator.pop(context, true);
                           },
-                          child: Text(AppLocalizations.of(context).textYes)),
+                          child: Text(AppLocalizations.of(context)!.textYes)),
                     )
                   ],
                 )

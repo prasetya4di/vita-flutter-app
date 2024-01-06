@@ -81,12 +81,12 @@ class _ChatSelectMedia extends State<ChatSelectMedia> {
             child: Row(
               children: [
                 mediaButton(
-                    Assets.imagesIcCamera, AppLocalizations.of(context).camera,
+                    Assets.imagesIcCamera, AppLocalizations.of(context)!.camera,
                     () {
                   widget.onSelect(ImageSource.camera);
                 }),
                 mediaButton(Assets.imagesIcGallery,
-                    AppLocalizations.of(context).gallery, () {
+                    AppLocalizations.of(context)!.gallery, () {
                   widget.onSelect(ImageSource.gallery);
                 }),
               ],

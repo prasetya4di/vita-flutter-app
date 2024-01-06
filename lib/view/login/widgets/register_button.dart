@@ -17,7 +17,7 @@ class RegisterButton extends StatelessWidget {
           minimumSize: const Size.fromHeight(45),
           padding: const EdgeInsets.all(12)),
       child: Text(
-        AppLocalizations.of(context).textSignUp,
+        AppLocalizations.of(context)!.textSignUp,
         style: const TextStyle(
             color: Colors.white,
             fontSize: 16,

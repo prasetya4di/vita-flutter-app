@@ -39,7 +39,7 @@ class _BirthdateFormField extends State<BirthdateFormField> {
       },
       controller: _birthdateController,
       readOnly: true,
-      label: AppLocalizations.of(context).textBirthday,
+      label: AppLocalizations.of(context)!.textBirthday,
       validator: _validateBirthdate,
       suffix: IconButton(
           padding: const EdgeInsets.all(0),
@@ -50,7 +50,7 @@ class _BirthdateFormField extends State<BirthdateFormField> {
 
   String? _validateBirthdate(String? value) {
     if (value != null && value.isEmpty) {
-      return AppLocalizations.of(context).textEmptyBirthday;
+      return AppLocalizations.of(context)!.textEmptyBirthday;
     } else {
       return null;
     }

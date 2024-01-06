@@ -22,7 +22,7 @@ class _PasswordFormField extends State<PasswordFormField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(AppLocalizations.of(context).textPassword,
+        Text(AppLocalizations.of(context)!.textPassword,
             style: Theme.of(context).textTheme.labelMedium),
         const SpaceVertical(),
         TextFormField(
@@ -53,7 +53,7 @@ class _PasswordFormField extends State<PasswordFormField> {
 
   String? _validatePassword(String? value) {
     return value!.isEmpty
-        ? AppLocalizations.of(context).textEmptyPassword
+        ? AppLocalizations.of(context)!.textEmptyPassword
         : null;
   }
 }

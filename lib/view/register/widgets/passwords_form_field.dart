@@ -34,7 +34,7 @@ class _PasswordsFormField extends State<PasswordsFormField> {
             }),
             onSave: widget.onSave,
             obscureText: !isPasswordVisible,
-            label: AppLocalizations.of(context).textPassword,
+            label: AppLocalizations.of(context)!.textPassword,
             controller: _passwordController,
             validator: _validatePassword),
         const SpaceVertical(),
@@ -45,7 +45,7 @@ class _PasswordsFormField extends State<PasswordsFormField> {
               });
             }),
             obscureText: !isRepeatPasswordVisible,
-            label: AppLocalizations.of(context).textRepeatPassword,
+            label: AppLocalizations.of(context)!.textRepeatPassword,
             controller: _repeatPasswordController,
             validator: _validateRepeatPassword)
       ],
@@ -67,11 +67,11 @@ class _PasswordsFormField extends State<PasswordsFormField> {
         RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
 
     if (value != null && value.isEmpty) {
-      return AppLocalizations.of(context).textEmptyPassword;
+      return AppLocalizations.of(context)!.textEmptyPassword;
     } else if (value!.length < 8) {
-      return AppLocalizations.of(context).textPasswordMinimum;
+      return AppLocalizations.of(context)!.textPasswordMinimum;
     } else if (!regex.hasMatch(value)) {
-      return AppLocalizations.of(context).textPasswordMustContain;
+      return AppLocalizations.of(context)!.textPasswordMustContain;
     } else {
       return null;
     }
@@ -79,9 +79,9 @@ class _PasswordsFormField extends State<PasswordsFormField> {
 
   String? _validateRepeatPassword(String? value) {
     if (value != null && value.isEmpty) {
-      return AppLocalizations.of(context).textEmptyRepeatPassword;
+      return AppLocalizations.of(context)!.textEmptyRepeatPassword;
     } else if (value != _passwordController.value.text) {
-      return AppLocalizations.of(context).textIncorrectRepeatPassword;
+      return AppLocalizations.of(context)!.textIncorrectRepeatPassword;
     } else {
       return null;
     }

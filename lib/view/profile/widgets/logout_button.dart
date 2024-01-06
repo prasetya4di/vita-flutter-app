@@ -15,7 +15,7 @@ class LogoutButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         showConfirmationDialog(
-                context, AppLocalizations.of(context).textLogoutConfirmation)
+                context, AppLocalizations.of(context)!.textLogoutConfirmation)
             .then((value) {
           if (value) {
             context.read<ProfileBloc>().add(const LogoutEvent());
@@ -27,7 +27,7 @@ class LogoutButton extends StatelessWidget {
           padding: const EdgeInsets.all(12),
           backgroundColor: AssetColor.red100),
       child: Text(
-        AppLocalizations.of(context).textLogout,
+        AppLocalizations.of(context)!.textLogout,
         style: const TextStyle(
             color: Colors.white,
             fontSize: 16,

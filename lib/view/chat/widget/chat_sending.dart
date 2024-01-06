@@ -31,7 +31,7 @@ class ChatSending extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: 8),
                   child: Text(
-                    AppLocalizations.of(context).sendMessageFailed,
+                    AppLocalizations.of(context)!.sendMessageFailed,
                     style:
                         const TextStyle(color: AssetColor.red100, fontSize: 8),
                   ),

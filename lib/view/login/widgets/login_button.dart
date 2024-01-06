@@ -15,7 +15,7 @@ class LoginButton extends StatelessWidget {
           minimumSize: const Size.fromHeight(45),
           padding: const EdgeInsets.all(12)),
       child: Text(
-        AppLocalizations.of(context).textLogin,
+        AppLocalizations.of(context)!.textLogin,
         style: const TextStyle(
             color: Colors.white,
             fontSize: 16,

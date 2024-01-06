@@ -37,19 +37,19 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ProfileInfo(
-                    label: AppLocalizations.of(context).textEmail,
+                    label: AppLocalizations.of(context)!.textEmail,
                     text: bloc.user?.email ?? ""),
                 ProfileInfo(
-                    label: AppLocalizations.of(context).textFirstName,
+                    label: AppLocalizations.of(context)!.textFirstName,
                     text: bloc.user?.firstName ?? ""),
                 ProfileInfo(
-                    label: AppLocalizations.of(context).textLastName,
+                    label: AppLocalizations.of(context)!.textLastName,
                     text: bloc.user?.lastName ?? ""),
                 ProfileInfo(
-                    label: AppLocalizations.of(context).textNickname,
+                    label: AppLocalizations.of(context)!.textNickname,
                     text: bloc.user?.nickname ?? ""),
                 ProfileInfo(
-                    label: AppLocalizations.of(context).textBirthday,
+                    label: AppLocalizations.of(context)!.textBirthday,
                     text: DateFormat("dd MMMM yyyy")
                         .format(bloc.user?.birthDate ?? DateTime.now())),
                 const SpaceVertical(size: 18),

@@ -15,7 +15,7 @@ class _LastNameFormField extends State<LastNameFormField> {
   @override
   Widget build(BuildContext context) {
     return UserFormField(
-      label: AppLocalizations.of(context).textLastName,
+      label: AppLocalizations.of(context)!.textLastName,
       validator: _validateLastName,
       onSave: widget.onSave,
     );
@@ -23,7 +23,7 @@ class _LastNameFormField extends State<LastNameFormField> {
 
   String? _validateLastName(String? value) {
     if (value != null && value.isEmpty) {
-      return AppLocalizations.of(context).textEmptyLastName;
+      return AppLocalizations.of(context)!.textEmptyLastName;
     } else {
       return null;
     }

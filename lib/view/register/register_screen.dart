@@ -42,7 +42,7 @@ class _RegisterScreen extends State<RegisterScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white10,
-        title: Text(AppLocalizations.of(context).textSignUp,
+        title: Text(AppLocalizations.of(context)!.textSignUp,
             style: Theme.of(context).textTheme.labelLarge),
         iconTheme: const IconThemeData(color: Colors.black),
       ),

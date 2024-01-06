@@ -47,7 +47,7 @@ class _ChatTextField extends State<ChatTextField> {
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 16, horizontal: 18),
-                    hintText: AppLocalizations.of(context).typeMessage,
+                    hintText: AppLocalizations.of(context)!.typeMessage,
                     hintStyle: const TextStyle(
                         color: AssetColor.gray200,
                         fontFamily: poppins,
@@ -83,7 +83,7 @@ class _ChatTextField extends State<ChatTextField> {
                           });
                         },
                   child: Text(
-                    AppLocalizations.of(context).sendButton,
+                    AppLocalizations.of(context)!.sendButton,
                     style: const TextStyle(
                         fontFamily: poppins,
                         fontWeight: FontWeight.w600,
